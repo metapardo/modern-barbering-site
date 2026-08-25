@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, type ReactNode } from 'react';
 import { Button } from '@/components/ui/button';
-import heroImage from '@assets/pexels-fernando-gonzalez-2626178-4331280_1787686391948.jpg';
+import heroImage from '@assets/np_New_York_city_skyline_at_sunset_0PJag4_large_1787701674333.jpg';
 import salonImage from '@assets/generated_images/salon.jpg';
 import mobileImage from '@assets/generated_images/mobile.jpg';
 import { cn } from '@/lib/utils';
@@ -112,8 +112,11 @@ function Hero() {
     <section className="relative w-full h-[100dvh] flex items-center pt-24 overflow-hidden section-dark">
       {/* Background with parallax effect */}
       <div 
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-transform duration-[10000ms] ease-out hover:scale-105 scale-100"
-        style={{ backgroundImage: `url(${heroImage})` }}
+        className="hero-background absolute inset-0 z-0 bg-center bg-no-repeat transition-transform duration-[10000ms] ease-out hover:scale-105 scale-100"
+        style={{
+          backgroundImage: `url(${heroImage})`,
+          backgroundColor: '#0B0B0C',
+        }}
       />
       {/* Heavy black scrim */}
       <div className="absolute inset-0 z-10 bg-[#0B0B0C]/80" />

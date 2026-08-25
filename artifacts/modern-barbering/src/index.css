@@ -132,6 +132,16 @@
   }
 }
 
+.hero-background {
+  background-size: 100% 100%;
+}
+
+@media (max-width: 767px) {
+  .hero-background {
+    background-size: cover;
+  }
+}
+
 @layer utilities {
   @keyframes marquee {
     0% { transform: translateX(0%); }
