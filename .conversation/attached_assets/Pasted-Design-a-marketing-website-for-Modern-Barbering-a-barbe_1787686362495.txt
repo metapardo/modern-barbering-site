@@ -1,0 +1,66 @@
+Design a marketing website for Modern Barbering — a barbering brand that works two ways: a flagship salon in the heart of Manhattan, and a mobile chair that drives to the client (home, office, hotel, green room, set).
+
+This is a design exercise. Judge every decision by one question: would this sit on the front page of Squarespace's or Framer's template gallery? If it looks like a barbershop website, it has failed. It should look like a menswear label, a boutique hotel, or an architecture practice — that happens to cut hair.
+
+The feeling
+
+Quiet grandeur. The brand treats a haircut as a threshold moment — you sit down as one version of yourself and stand up as the one the day ahead requires. The design has to carry that weight without shouting: no neon, no barber poles, no red-white-and-blue, no busy hero collage, no stock "fresh fade" energy. Restraint reads as expensive. Confidence is communicated through scale and space, never through volume.
+
+Art direction
+
+Palette. Near-black (
+#0B0B0C) against warm bone (
+#F4F1EA). One muted accent — deep barber green or oxblood — rationed to the primary button, a hairline rule, an active nav state. Nothing else gets color. Sections alternate ground: dark, light, dark, so scrolling feels like moving through rooms.
+
+Typography. A tall, high-contrast editorial serif or display face for headlines, set enormous — the hero headline should own 60–70% of the viewport width and break across two or three lines with intentional ragging. Pair it with a clean neutral grotesk for body copy at generous line-height. Every section opens with a small all-caps eyebrow label, heavily letter-spaced, sitting well above its headline. That eyebrow is the spine of the whole design — it repeats in every single section and is what makes the page feel like one system rather than a stack of blocks.
+
+Space. Extravagant. Sections breathe at 140–200px of vertical padding on desktop. Dividers are hairlines, never boxes or cards with shadows. Nothing is centered by default — favor an asymmetric editorial grid where headlines sit left and supporting copy hangs in a narrow column to the right, so the page reads like a magazine spread.
+
+Photography. Moody, desaturated or full black-and-white, high contrast, shallow depth of field. Hands mid-motion. A straight razor. The Manhattan room in low light. A kit case open on a hotel floor. Full-bleed where it appears — no rounded corners, no drop shadows, no photo grids. Faces are cropped tight or turned away; this is about atmosphere, not portraits.
+
+Motion. Slow and inevitable. Fade-and-rise reveals as sections enter, a single continuous horizontal marquee, a whisper of parallax on the hero image. Nothing bounces, nothing springs, nothing counts up. If motion draws attention to itself, cut it.
+
+The page, section by section
+
+A single long scroll. Header sits transparent over the hero and resolves into a solid bar on scroll, carrying only a wordmark, four links, and one small booking button.
+
+1. Hero — dark. Full-viewport, full-bleed photography behind a heavy black scrim. Eyebrow: MODERN BARBERING. Headline set at maximum scale, broken across lines: "One chair. / Or none at all." Below it, in a narrow column, the tagline: "Get ready — on the move, or in the salon. Modern Barbering prepares you for the future ahead." One filled accent button, BOOK YOUR MOMENT, and a quiet secondary link beside it. A thin scroll cue at the bottom edge.
+
+2. Why it matters — light. No image. Type alone carries this section: eyebrow WHY IT MATTERS, then a two-line headline — "Not a haircut in the abstract. / One chair. One version of you." — with a single short paragraph set right, about preparation rather than maintenance: the interview, the flight out, the stage, the first date, the day you needed to look like you meant it.
+
+3. How you arrive — split. The core idea of the brand, rendered as two large panels, Roman-numeraled. I — THE SALON: "In the heart of Manhattan. A room built for the work." II — THE MOBILE CHAIR: "We drive to you. The chair finds the moment, wherever it's happening." Each panel is a full-height image with the numeral set large and the copy sitting low. On desktop they sit side by side with a hairline between; on mobile they stack as two full-bleed frames. The two panels must feel equal in weight — neither service is the lesser one.
+
+4. The Protocol — dark. Eyebrow THE PROCESS, headline "The Modern Barbering Protocol." Three numbered steps across a row, separated by hairlines, with the numerals (01, 02, 03) set large in the accent or outlined: 01 Consultation — "Your face, your week, your reason for being in the chair." 02 The Cut — "Precision first. Craft second. Neither rushed." 03 The Finish — "You leave ready — not just groomed."
+
+5. Moments supported — light. Eyebrow MOMENTS SUPPORTED, headline "One date. One chair. A protocol built around it." Then a vertical list, each row a full-width hairline-separated line with the name left and its number right: The Interview 01 · The Flight Out 02 · The Big Presentation 03 · The First Date 04 · The Wedding 05 · The Return 06. On hover the row inverts to dark. This list should feel like a menu in a very good restaurant.
+
+6. Philosophy — dark, full-bleed. The emotional peak of the page. Nothing but a large italic serif pull-quote, centered in an otherwise empty field of black: "They don't see the cut. They see the person who was ready." One supporting line beneath at a fraction of the size: "Confidence isn't styled on top of you. It's revealed underneath — that's the work." Give this section more vertical space than any other. The emptiness is the design.
+
+7. Who we've prepared — thin band. A single-line horizontal marquee scrolling slowly and continuously, items separated by a small accent mark: Founders · Executives · Grooms · Actors · Athletes · Fathers · Travelers · Board Members · Public Speakers. Eyebrow above it, nothing else in the band.
+
+8. Where we work — light. Two columns, hairline between. Left: the Manhattan flagship — address, hours, "by appointment." Right: the mobile service area — "Manhattan, Brooklyn, and beyond. Tell us where you'll be." A minimal, desaturated, unlabeled map or a single low-light photograph of the room may sit beneath, but only one of the two.
+
+9. Closing — dark. Headline "You have a moment ahead. / We have the chair for it." One line beneath: "Tell us where you'll be — the salon, or wherever you are." A single accent button: BOOK NOW.
+
+10. Footer. Wordmark, four links, a hairline, and the year. Nothing more.
+
+Mobile
+
+Design mobile as its own composition, not a squeezed desktop. The hero headline still commands the screen — scale it down only as far as it must go. Eyebrows stay. Whitespace compresses but never disappears. The two arrival panels become two full-bleed frames you scroll through, and the marquee keeps moving. A large share of this audience books a mobile visit from their phone, so the booking button should be reachable with a thumb at all times.
+
+What to deliver
+
+The full page designed end to end — desktop and mobile — with real type sizes, real spacing, and the actual copy above in place. Establish the type scale, the color roles, the eyebrow treatment, the hairline weight, and the button style as a small system, then apply it consistently across all ten sections. Placeholder photography is fine, but choose images that match the moody, desaturated direction above; the wrong photography will break this design faster than anything else.
+
+See task progress for longer tasks.
+
+modern-barbering-replit-prompt.md
+modern-barbering-design-prompt.md
+
+www.premoment.co
+
+Tabs close mcp
+
+Track tools and referenced files used in this task.
+
+Notifications are turned off for Claude. Enable them in System Settings to get alerts when Claude finishes a task.
