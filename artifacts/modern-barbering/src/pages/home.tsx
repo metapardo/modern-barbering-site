@@ -115,7 +115,7 @@ function Header({ onBook }: { onBook: () => void }) {
 
 function Hero({ onChoose }: { onChoose: (mode: VisitMode) => void }) {
   return (
-    <section className="relative w-full h-[100dvh] flex items-center pt-24 overflow-hidden section-dark">
+    <section className="relative w-full min-h-[100dvh] h-auto flex items-center pt-24 pb-24 lg:h-[100dvh] lg:pb-0 overflow-hidden section-dark">
       {/* Background with parallax effect */}
       <div 
         className="hero-background absolute inset-0 z-0 bg-center bg-no-repeat transition-transform duration-[10000ms] ease-out hover:scale-105 scale-100"
