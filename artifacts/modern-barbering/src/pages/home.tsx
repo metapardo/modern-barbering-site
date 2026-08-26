@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef, type ReactNode } from 'react';
 import { Button } from '@/components/ui/button';
 import heroImage from '@assets/np_New_York_city_skyline_at_sunset_0PJag4_large_1787701674333.jpg';
-import salonImage from '@assets/generated_images/salon.jpg';
+import salonImage from '@assets/generated_images/salon-empty-chair.jpg';
 import mobileImage from '@assets/generated_images/mobile.jpg';
 import { cn } from '@/lib/utils';
+
+type VisitMode = 'salon' | 'mobile';
 
 function Reveal({ children, className }: { children: ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -74,13 +76,17 @@ function Header({ onBook }: { onBook: () => void }) {
         </button>
         
         <nav className="hidden md:flex items-center gap-8">
-          {['protocol', 'moments', 'locations', 'philosophy'].map((item) => (
+          {[
+            { id: 'choices', label: 'How it works' },
+            { id: 'locations', label: 'Locations' },
+            { id: 'philosophy', label: 'Philosophy' },
+          ].map((item) => (
             <button
-              key={item}
-              onClick={() => scrollToSection(item)}
+              key={item.id}
+              onClick={() => scrollToSection(item.id)}
               className="text-[#F4F1EA] text-xs tracking-widest uppercase hover:text-primary transition-colors"
             >
-              {item}
+              {item.label}
             </button>
           ))}
           <Button 
@@ -107,7 +113,7 @@ function Header({ onBook }: { onBook: () => void }) {
   );
 }
 
-function Hero() {
+function Hero({ onChoose }: { onChoose: (mode: VisitMode) => void }) {
   return (
     <section className="relative w-full h-[100dvh] flex items-center pt-24 overflow-hidden section-dark">
       {/* Background with parallax effect */}
@@ -130,9 +136,9 @@ function Hero() {
           Modern Barbering
         </div>
         
-        <h1 className="headline-huge text-[#F4F1EA] mb-12 max-w-4xl">
-          One chair.<br />
-          Or none at all.
+        <h1 className="headline-huge text-[#F4F1EA] mb-12 max-w-5xl">
+          One chair<br />
+          for all your moments.
         </h1>
         
         <div className="max-w-md ml-0 lg:ml-24">
@@ -140,15 +146,24 @@ function Hero() {
             Get ready — on the move, or in the salon. Modern Barbering prepares you for the future ahead.
           </p>
           
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
-            <Button size="lg" onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}>
-              Book Your Moment
-            </Button>
-            <button 
-              onClick={() => document.getElementById('protocol')?.scrollIntoView({ behavior: 'smooth' })}
-              className="text-xs tracking-widest uppercase text-[#F4F1EA]/70 hover:text-[#F4F1EA] transition-colors border-b border-transparent hover:border-[#F4F1EA] pb-1"
+          <div className="grid w-full max-w-xl grid-cols-1 gap-3 sm:grid-cols-2">
+            <button
+              type="button"
+              onClick={() => onChoose('salon')}
+              className="group border border-[#F4F1EA]/35 bg-[#F4F1EA]/5 p-5 text-left transition-colors hover:border-[#F4F1EA] hover:bg-[#F4F1EA] hover:text-[#0B0B0C]"
             >
-              The Protocol
+              <span className="block text-xs font-medium uppercase tracking-[0.18em]">The salon</span>
+              <span className="mt-2 block font-serif text-2xl leading-none">50 West 17th</span>
+              <span className="mt-3 block text-xs uppercase tracking-[0.14em] opacity-60 group-hover:opacity-70">Choose this chair</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => onChoose('mobile')}
+              className="group border border-[#F4F1EA]/35 bg-[#F4F1EA]/5 p-5 text-left transition-colors hover:border-[#F4F1EA] hover:bg-[#F4F1EA] hover:text-[#0B0B0C]"
+            >
+              <span className="block text-xs font-medium uppercase tracking-[0.18em]">On the go</span>
+              <span className="mt-2 block font-serif text-2xl leading-none">We come to you</span>
+              <span className="mt-3 block text-xs uppercase tracking-[0.14em] opacity-60 group-hover:opacity-70">Choose your location</span>
             </button>
           </div>
         </div>
@@ -166,9 +181,7 @@ function WhyItMatters() {
     <section className="py-[140px] lg:py-[200px] section-light">
       <div className="container mx-auto px-6 md:px-12">
         <Reveal>
-          <span className="eyebrow text-[#0B0B0C]/50">Why It Matters</span>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-8">
               <h2 className="headline-large text-[#0B0B0C]">
                 Not a haircut in the abstract.<br />
@@ -176,8 +189,8 @@ function WhyItMatters() {
               </h2>
             </div>
             
-            <div className="lg:col-span-4 flex flex-col justify-end pt-8 lg:pt-0">
-              <p className="text-lg text-[#0B0B0C]/70 leading-relaxed font-light">
+            <div className="lg:col-span-4 lg:pt-4">
+              <p className="max-w-md text-lg text-[#0B0B0C]/70 leading-relaxed font-light">
                 The interview, the flight out, the stage, the first date, the day you needed to look like you meant it. We prepare you for the moments that require your absolute best.
               </p>
             </div>
@@ -206,7 +219,7 @@ function HowYouArrive() {
             <div>
               <span className="eyebrow text-[#F4F1EA]/70 mb-4">The Salon</span>
               <p className="text-2xl md:text-3xl text-[#F4F1EA] max-w-sm leading-snug">
-                In the heart of Manhattan. A room built for the work.
+                50 West 17th Street. A room built for the work.
               </p>
             </div>
           </div>
@@ -236,94 +249,48 @@ function HowYouArrive() {
   );
 }
 
-function Protocol() {
+function ChooseYourChair({ onChoose }: { onChoose: (mode: VisitMode) => void }) {
   const steps = [
-    {
-      num: "01",
-      title: "Consultation",
-      desc: "Your face, your week, your reason for being in the chair."
-    },
-    {
-      num: "02",
-      title: "The Cut",
-      desc: "Precision first. Craft second. Neither rushed."
-    },
-    {
-      num: "03",
-      title: "The Finish",
-      desc: "You leave ready — not just groomed."
-    }
+    ['01', 'Choose your chair', 'Head to 50 West 17th, or have the chair arrive at your door.'],
+    ['02', 'Tell us the moment', 'Share the date, time, and—if we are coming to you—your location.'],
+    ['03', 'We confirm the details', 'A concise confirmation, then your appointment is set.'],
   ];
 
   return (
-    <section className="py-[140px] lg:py-[200px] section-dark" id="protocol">
+    <section id="choices" className="section-light py-[120px] lg:py-[170px]">
       <div className="container mx-auto px-6 md:px-12">
         <Reveal>
-          <span className="eyebrow text-[#F4F1EA]/50">The Process</span>
-          <h2 className="headline-large text-[#F4F1EA] mb-24">
-            The Modern Barbering Protocol.
-          </h2>
+          <span className="eyebrow text-[#0B0B0C]/50">A simple choice</span>
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-20">
+            <h2 className="headline-large lg:col-span-8 text-[#0B0B0C]">
+              Decide where the chair meets you.
+            </h2>
+            <p className="max-w-sm self-end text-lg leading-relaxed text-[#0B0B0C]/70 font-light lg:col-span-4">
+              Start with the setting that makes the most sense for your day. We’ll take it from there.
+            </p>
+          </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3">
-          {steps.map((step, idx) => (
-            <Reveal 
-              key={step.num}
-              className={cn(
-                "p-8 lg:p-16 border-t md:border-t-0 border-[#F4F1EA]/20 h-full",
-                idx !== 0 && "md:border-l"
-              )}
-            >
-              <div className="font-serif text-6xl md:text-8xl text-primary mb-12">
-                {step.num}
-              </div>
-              <h3 className="text-xl tracking-widest uppercase mb-4 text-[#F4F1EA]">
-                {step.title}
-              </h3>
-              <p className="text-[#F4F1EA]/60 font-light leading-relaxed">
-                {step.desc}
-              </p>
+        <div className="mt-16 grid grid-cols-1 border-y border-[#0B0B0C]/15 md:grid-cols-3">
+          {steps.map(([number, title, copy], index) => (
+            <Reveal key={number} className={cn('p-8 md:p-10 lg:p-12', index > 0 && 'border-t border-[#0B0B0C]/15 md:border-l md:border-t-0')}>
+              <span className="font-serif text-5xl text-primary">{number}</span>
+              <h3 className="mt-10 text-sm font-medium uppercase tracking-[0.16em] text-[#0B0B0C]">{title}</h3>
+              <p className="mt-4 max-w-xs leading-relaxed text-[#0B0B0C]/65">{copy}</p>
             </Reveal>
           ))}
         </div>
-      </div>
-    </section>
-  );
-}
 
-function MomentsSupported() {
-  const moments = [
-    "The Interview",
-    "The Flight Out",
-    "The Big Presentation",
-    "The First Date",
-    "The Wedding",
-    "The Return"
-  ];
-
-  return (
-    <section className="py-[140px] lg:py-[200px] section-light" id="moments">
-      <div className="container mx-auto px-6 md:px-12 mb-24">
-        <span className="eyebrow text-[#0B0B0C]/50">Moments Supported</span>
-        <h2 className="headline-large text-[#0B0B0C] max-w-4xl">
-          One date. One chair. A protocol built around it.
-        </h2>
-      </div>
-
-      <div className="w-full flex flex-col border-t border-[#0B0B0C]/10">
-        {moments.map((moment, idx) => (
-          <div 
-            key={idx}
-            className="group w-full flex items-center justify-between px-6 md:px-12 py-8 md:py-12 border-b border-[#0B0B0C]/10 hover:bg-[#0B0B0C] hover:text-[#F4F1EA] transition-colors duration-500 cursor-default"
+        <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+          <Button size="lg" onClick={() => onChoose('salon')}>Choose the salon</Button>
+          <button
+            type="button"
+            onClick={() => onChoose('mobile')}
+            className="border border-[#0B0B0C]/25 px-7 py-4 text-xs font-medium uppercase tracking-[0.16em] text-[#0B0B0C] transition-colors hover:border-[#0B0B0C] hover:bg-[#0B0B0C] hover:text-[#F4F1EA]"
           >
-            <span className="font-serif text-3xl md:text-5xl lg:text-6xl tracking-tight transition-transform duration-500 group-hover:translate-x-4">
-              {moment}
-            </span>
-            <span className="text-xs tracking-widest opacity-30 group-hover:opacity-100 transition-opacity duration-500 font-mono">
-              0{idx + 1}
-            </span>
-          </div>
-        ))}
+            Choose on the go
+          </button>
+        </div>
       </div>
     </section>
   );
@@ -346,32 +313,6 @@ function Philosophy() {
   );
 }
 
-function Marquee() {
-  const words = [
-    "Founders", "Executives", "Grooms", "Actors", "Athletes", 
-    "Fathers", "Travelers", "Board Members", "Public Speakers"
-  ];
-  
-  return (
-    <section className="py-24 border-y border-[#0B0B0C]/10 section-light overflow-hidden flex flex-col items-center">
-      <span className="eyebrow text-[#0B0B0C]/50 mb-12 text-center w-full">Who We've Prepared</span>
-      
-      <div className="relative w-full flex overflow-x-hidden">
-        <div className="animate-marquee whitespace-nowrap flex items-center">
-          {[...words, ...words, ...words].map((word, idx) => (
-            <div key={idx} className="flex items-center">
-              <span className="text-4xl md:text-6xl font-serif text-[#0B0B0C] px-8">
-                {word}
-              </span>
-              <span className="text-primary text-2xl mx-4">·</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function WhereWeWork() {
   return (
     <section className="py-[140px] lg:py-[200px] section-light">
@@ -384,7 +325,7 @@ function WhereWeWork() {
                 Manhattan
               </h3>
               <p className="text-lg text-[#0B0B0C]/70 font-light mb-4">
-                120 West 24th Street<br />
+                50 West 17th Street<br />
                 New York, NY 10011
               </p>
               <p className="text-sm tracking-widest uppercase text-[#0B0B0C]/50 mb-12">
@@ -443,9 +384,9 @@ function Footer() {
             MODERN BARBERING
           </div>
           <div className="flex items-center gap-8 text-xs tracking-widest uppercase text-[#F4F1EA]/50">
-            <a href="#protocol" className="hover:text-[#F4F1EA] transition-colors">Protocol</a>
-            <a href="#moments" className="hover:text-[#F4F1EA] transition-colors">Moments</a>
+            <a href="#choices" className="hover:text-[#F4F1EA] transition-colors">How it works</a>
             <a href="#locations" className="hover:text-[#F4F1EA] transition-colors">Locations</a>
+            <a href="#philosophy" className="hover:text-[#F4F1EA] transition-colors">Philosophy</a>
             <a href="#booking" className="hover:text-[#F4F1EA] transition-colors">Contact</a>
           </div>
         </div>
@@ -461,9 +402,11 @@ function Footer() {
 export default function Home() {
   const [bookingOpen, setBookingOpen] = useState(false);
   const [bookingSent, setBookingSent] = useState(false);
+  const [bookingMode, setBookingMode] = useState<VisitMode | null>(null);
 
-  const openBooking = () => {
+  const openBooking = (mode?: VisitMode) => {
     setBookingSent(false);
+    setBookingMode(mode ?? null);
     setBookingOpen(true);
   };
 
@@ -471,6 +414,7 @@ export default function Home() {
 
   const handleBookingSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!bookingMode) return;
     setBookingSent(true);
   };
 
@@ -478,13 +422,11 @@ export default function Home() {
     <div className="w-full min-h-[100dvh] bg-[#0B0B0C] text-[#F4F1EA] selection:bg-primary selection:text-[#F4F1EA]">
       <Header onBook={openBooking} />
       <main>
-        <Hero />
+        <Hero onChoose={openBooking} />
         <WhyItMatters />
         <HowYouArrive />
-        <Protocol />
-        <MomentsSupported />
+        <ChooseYourChair onChoose={openBooking} />
         <Philosophy />
-        <Marquee />
         <WhereWeWork />
         <Closing onBook={openBooking} />
       </main>
@@ -525,9 +467,52 @@ export default function Home() {
               <>
                 <span className="eyebrow text-[#0B0B0C]/50">Book your moment</span>
                 <h2 id="booking-title" className="mt-5 max-w-md font-serif text-5xl leading-none sm:text-6xl">
-                  Tell us where you’ll be.
+                  Choose where the chair meets you.
                 </h2>
                 <form onSubmit={handleBookingSubmit} className="mt-10 space-y-5">
+                  <fieldset>
+                    <legend className="text-xs font-medium uppercase tracking-[0.16em] text-[#0B0B0C]/55">
+                      Start with a setting
+                    </legend>
+                    <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                      <button
+                        type="button"
+                        aria-pressed={bookingMode === 'salon'}
+                        onClick={() => setBookingMode('salon')}
+                        className={cn(
+                          'border p-5 text-left transition-colors',
+                          bookingMode === 'salon'
+                            ? 'border-[#5D1612] bg-[#5D1612] text-[#F4F1EA]'
+                            : 'border-[#0B0B0C]/20 hover:border-[#0B0B0C]',
+                        )}
+                      >
+                        <span className="block text-xs font-medium uppercase tracking-[0.16em]">The salon</span>
+                        <span className="mt-2 block font-serif text-2xl leading-none">50 West 17th</span>
+                      </button>
+                      <button
+                        type="button"
+                        aria-pressed={bookingMode === 'mobile'}
+                        onClick={() => setBookingMode('mobile')}
+                        className={cn(
+                          'border p-5 text-left transition-colors',
+                          bookingMode === 'mobile'
+                            ? 'border-[#5D1612] bg-[#5D1612] text-[#F4F1EA]'
+                            : 'border-[#0B0B0C]/20 hover:border-[#0B0B0C]',
+                        )}
+                      >
+                        <span className="block text-xs font-medium uppercase tracking-[0.16em]">On the go</span>
+                        <span className="mt-2 block font-serif text-2xl leading-none">We come to you</span>
+                      </button>
+                    </div>
+                    <p className="mt-3 text-sm leading-relaxed text-[#0B0B0C]/60">
+                      {bookingMode === 'salon'
+                        ? 'Your appointment will be at our Manhattan salon on West 17th Street.'
+                        : bookingMode === 'mobile'
+                          ? 'We’ll confirm the address and timing for your mobile visit.'
+                          : 'Choose your setting to continue.'}
+                    </p>
+                    <input type="hidden" name="location" value={bookingMode ?? ''} />
+                  </fieldset>
                   <label className="block">
                     <span className="sr-only">Your name</span>
                     <input
@@ -548,20 +533,7 @@ export default function Home() {
                       className="w-full border-0 border-b border-[#0B0B0C]/20 bg-transparent px-0 py-3 text-base outline-none placeholder:text-[#0B0B0C]/40 focus:border-[#5D1612]"
                     />
                   </label>
-                  <label className="block">
-                    <span className="sr-only">Where will you be?</span>
-                    <select
-                      required
-                      name="location"
-                      defaultValue=""
-                      className="w-full border-0 border-b border-[#0B0B0C]/20 bg-transparent px-0 py-3 text-base text-[#0B0B0C]/60 outline-none focus:border-[#5D1612]"
-                    >
-                      <option value="" disabled>Choose a setting</option>
-                      <option value="salon">The Manhattan salon</option>
-                      <option value="mobile">The mobile chair</option>
-                    </select>
-                  </label>
-                  <Button type="submit" size="lg" className="mt-4 w-full sm:w-auto">
+                  <Button type="submit" size="lg" disabled={!bookingMode} className="mt-4 w-full sm:w-auto">
                     Request an appointment
                   </Button>
                 </form>
