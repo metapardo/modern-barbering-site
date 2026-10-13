@@ -6,9 +6,10 @@ import { cn } from '@/lib/utils';
 type HeaderProps = {
   onBook: () => void;
   activeAbout?: boolean;
+  activePolicies?: boolean;
 };
 
-export function Header({ onBook, activeAbout = false }: HeaderProps) {
+export function Header({ onBook, activeAbout = false, activePolicies = false }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const links = [
@@ -77,6 +78,19 @@ export function Header({ onBook, activeAbout = false }: HeaderProps) {
           >
             About
           </Link>
+          <Link
+            href="/policies"
+            aria-current={activePolicies ? 'page' : undefined}
+            data-testid="link-nav-policies"
+            className={cn(
+              'flex min-h-11 items-center whitespace-nowrap border-b text-xs uppercase tracking-widest transition-colors hover:border-[#F4F1EA]/60 hover:text-[#F4F1EA]',
+              activePolicies
+                ? 'border-[#F4F1EA] text-[#F4F1EA]'
+                : 'border-transparent text-[#F4F1EA]/80',
+            )}
+          >
+            Policies
+          </Link>
           <Button variant="default" size="sm" onClick={onBook} data-testid="button-book-now">
             Book Now
           </Button>
@@ -133,6 +147,18 @@ export function Header({ onBook, activeAbout = false }: HeaderProps) {
           >
             About
           </Link>
+          <Link
+            href="/policies"
+            aria-current={activePolicies ? 'page' : undefined}
+            onClick={() => setMenuOpen(false)}
+            data-testid="link-mobile-policies"
+            className={cn(
+              'block border-b border-[#F4F1EA]/10 py-5 text-sm uppercase tracking-[0.16em] hover:text-[#F4F1EA]/70',
+              activePolicies ? 'text-[#F4F1EA]' : 'text-[#F4F1EA]/75',
+            )}
+          >
+            Policies
+          </Link>
         </nav>
       )}
     </header>
@@ -146,6 +172,7 @@ export function Footer() {
     { href: '/#philosophy', label: 'Philosophy' },
     { href: '/about', label: 'About' },
     { href: '/#booking', label: 'Contact' },
+    { href: '/policies', label: 'Policies' },
   ];
 
   return (

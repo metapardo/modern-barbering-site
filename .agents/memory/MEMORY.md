@@ -1,1 +1,3 @@
 - [Brand naming](brand-naming.md) — Use “Modern Barbering NYC” as the public brand name.
+- [Events offering](events-offering.md) — Events are a third service option alongside salon and mobile visits.
+- [Codegen compatibility](codegen-compatibility.md) — Do not trust Orval’s automatic Zod version detection in this workspace.

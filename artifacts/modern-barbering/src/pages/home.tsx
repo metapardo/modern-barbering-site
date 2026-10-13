@@ -5,6 +5,8 @@ import heroImage from '@assets/np_New_York_city_skyline_at_sunset_0PJag4_large_1
 import salonImage from '@assets/Agent_Image_-_Convert_this_photograph_to_black_and_white_clean_1791911057096.png';
 import mobileImage from '@assets/Agent_Image_-_Convert_this_photograph_to_black_and_white_with__1791909001531.png';
 import { cn } from '@/lib/utils';
+import { useCreateEventRequest } from '@workspace/api-client-react';
+import type { EventRequestInput } from '@workspace/api-client-react';
 
 type VisitMode = 'salon' | 'mobile';
 
@@ -43,7 +45,7 @@ function Reveal({ children, className }: { children: ReactNode; className?: stri
 
 function Hero({ onChoose }: { onChoose: (mode: VisitMode) => void }) {
   return (
-    <section className="relative w-full min-h-[100dvh] h-auto flex items-center pt-24 pb-24 lg:h-[100dvh] lg:pb-0 overflow-hidden section-dark">
+    <section className="relative w-full min-h-[100dvh] h-auto flex items-center pt-24 pb-24 overflow-hidden section-dark">
       {/* Background with parallax effect */}
       <div 
         className="hero-background absolute inset-0 z-0 bg-center bg-no-repeat transition-transform duration-[10000ms] ease-out hover:scale-105 scale-100"
@@ -67,16 +69,16 @@ function Hero({ onChoose }: { onChoose: (mode: VisitMode) => void }) {
           for all your moments.
         </h1>
         
-        <div className="max-w-md ml-0 lg:ml-24">
+          <div className="max-w-2xl ml-0 lg:ml-24">
           <p className="text-[1.0125rem] md:text-[1.125rem] text-[#F4F1EA]/80 mb-10 leading-relaxed font-light">
             Get ready — on the move, or in the salon. Modern Barbering NYC prepares you for the future ahead.
           </p>
           
-          <div className="grid w-full max-w-xl grid-cols-1 gap-3 sm:grid-cols-2">
+          <div className="grid w-full max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3">
             <button
               type="button"
               onClick={() => onChoose('salon')}
-              className="group border border-[#F4F1EA]/35 bg-[#F4F1EA]/5 p-5 text-left transition-colors hover:border-[#F4F1EA] hover:bg-[#F4F1EA] hover:text-[#0B0B0C]"
+              className="group min-h-[132px] border border-[#F4F1EA]/35 bg-[#F4F1EA]/5 p-4 text-left transition-colors hover:border-[#F4F1EA] hover:bg-[#F4F1EA] hover:text-[#0B0B0C] sm:p-5"
             >
               <span className="block text-xs font-medium uppercase tracking-[0.18em]">The salon</span>
               <span className="mt-2 block font-serif text-2xl leading-none">50 West 17th</span>
@@ -85,11 +87,21 @@ function Hero({ onChoose }: { onChoose: (mode: VisitMode) => void }) {
             <button
               type="button"
               onClick={() => onChoose('mobile')}
-              className="group border border-[#F4F1EA]/35 bg-[#F4F1EA]/5 p-5 text-left transition-colors hover:border-[#F4F1EA] hover:bg-[#F4F1EA] hover:text-[#0B0B0C]"
+              className="group min-h-[132px] border border-[#F4F1EA]/35 bg-[#F4F1EA]/5 p-4 text-left transition-colors hover:border-[#F4F1EA] hover:bg-[#F4F1EA] hover:text-[#0B0B0C] sm:p-5"
             >
               <span className="block text-xs font-medium uppercase tracking-[0.18em]">On the go</span>
               <span className="mt-2 block font-serif text-2xl leading-none">We come to you</span>
               <span className="mt-3 block text-xs uppercase tracking-[0.14em] opacity-60 group-hover:opacity-70">Choose your location</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => document.getElementById('event-request')?.scrollIntoView({ behavior: 'smooth' })}
+              className="group min-h-[132px] border border-[#F4F1EA]/35 bg-[#F4F1EA]/5 p-4 text-left transition-colors hover:border-[#F4F1EA] hover:bg-[#F4F1EA] hover:text-[#0B0B0C] sm:p-5"
+              data-testid="button-hero-events"
+            >
+              <span className="block text-xs font-medium uppercase tracking-[0.18em]">Events</span>
+              <span className="mt-2 block font-serif text-2xl leading-none">Wedding &amp; group</span>
+              <span className="mt-3 block text-xs uppercase tracking-[0.14em] opacity-60 group-hover:opacity-70">Request an event</span>
             </button>
           </div>
         </div>
@@ -178,7 +190,7 @@ function ChooseYourChair({ onChoose }: { onChoose: (mode: VisitMode) => void }) 
   const steps = [
     ['01', 'Choose your chair', 'Head to 50 West 17th, or have the chair arrive at your door.'],
     ['02', 'Tell us the moment', 'Share the date, time, and—if we are coming to you—your location.'],
-    ['03', 'We confirm the details', 'A concise confirmation, then your appointment is set.'],
+    ['03', 'Events', 'Wedding mornings, celebrations, and group appointments arranged around your day.'],
   ];
 
   return (
@@ -206,7 +218,7 @@ function ChooseYourChair({ onChoose }: { onChoose: (mode: VisitMode) => void }) 
           ))}
         </div>
 
-        <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+        <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <Button size="lg" onClick={() => onChoose('salon')}>Choose the salon</Button>
           <button
             type="button"
@@ -215,6 +227,13 @@ function ChooseYourChair({ onChoose }: { onChoose: (mode: VisitMode) => void }) 
           >
             Choose on the go
           </button>
+          <a
+            href="#event-request"
+            className="inline-flex min-h-12 items-center justify-center border border-[#0B0B0C]/25 px-7 py-4 text-xs font-medium uppercase tracking-[0.16em] text-[#0B0B0C] transition-colors hover:border-[#0B0B0C] hover:bg-[#0B0B0C] hover:text-[#F4F1EA]"
+            data-testid="link-request-event"
+          >
+            Request an Event
+          </a>
         </div>
       </div>
     </section>
@@ -266,13 +285,168 @@ function WhereWeWork() {
                 On Location
               </h3>
               <p className="text-lg text-[#0B0B0C]/70 font-light mb-4 max-w-sm">
-                Manhattan, Brooklyn, and beyond. Tell us where you'll be.
+                The mobile chair serves Manhattan. Outside-area events are available by inquiry.
               </p>
               <p className="text-sm tracking-widest uppercase text-[#0B0B0C]/50 mb-12">
                 Home · Office · Hotel · Set
               </p>
             </Reveal>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function eventRequestError(error: unknown): string {
+  if (error && typeof error === 'object') {
+    const value = error as { message?: unknown; data?: unknown; body?: unknown };
+    for (const source of [value.data, value.body]) {
+      if (source && typeof source === 'object') {
+        const details = source as { message?: unknown; error?: unknown };
+        if (typeof details.message === 'string') return details.message;
+        if (typeof details.error === 'string') return details.error;
+      }
+    }
+    if (typeof value.message === 'string' && value.message.trim()) return value.message;
+  }
+  return 'We couldn’t send your inquiry just now. Your details are still here—please try again.';
+}
+
+function EventRequest() {
+  const createRequest = useCreateEventRequest();
+  const formRef = useRef<HTMLFormElement>(null);
+  const submittingRef = useRef(false);
+  const [receipt, setReceipt] = useState<{ reference: string; status: 'received' } | null>(null);
+  const today = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit',
+  }).format(new Date());
+
+  const submitEventRequest = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (submittingRef.current) return;
+    const form = event.currentTarget;
+    const fields = new FormData(form);
+    const payload: EventRequestInput = {
+      contactName: String(fields.get('contactName') ?? '').trim(),
+      contactEmail: String(fields.get('contactEmail') ?? '').trim(),
+      eventType: String(fields.get('eventType') ?? '').trim(),
+      date: String(fields.get('date') ?? ''),
+      readyByTime: String(fields.get('readyByTime') ?? ''),
+      numberOfGuests: Number(fields.get('numberOfGuests')),
+      location: String(fields.get('location') ?? '').trim(),
+      servicesNeeded: String(fields.get('servicesNeeded') ?? '').trim(),
+      notes: String(fields.get('notes') ?? '').trim() || undefined,
+    };
+    submittingRef.current = true;
+    createRequest.mutate(
+      { data: payload },
+      {
+        onSuccess: (response) => {
+          submittingRef.current = false;
+          setReceipt(response);
+          formRef.current?.reset();
+        },
+        onError: () => {
+          submittingRef.current = false;
+        },
+      },
+    );
+  };
+
+  const fieldClass =
+    'mt-2 w-full border border-[#0B0B0C]/20 bg-transparent px-4 py-3 text-base text-[#0B0B0C] outline-none transition-colors placeholder:text-[#0B0B0C]/35 focus:border-[#5D1612]';
+  const labelClass = 'block text-xs font-medium uppercase tracking-[0.13em] text-[#0B0B0C]/65';
+
+  return (
+    <section id="event-request" className="section-light scroll-mt-24 border-t border-[#0B0B0C]/10 py-24 sm:py-32">
+      <div className="container mx-auto grid grid-cols-1 gap-12 px-6 md:grid-cols-12 md:gap-16 md:px-12">
+        <div className="md:col-span-5">
+          <Reveal>
+            <span className="eyebrow text-[#0B0B0C]/50">Events · By inquiry</span>
+            <h2 className="headline-large text-[#0B0B0C]">A good day starts before the first guest arrives.</h2>
+            <p className="mt-7 max-w-md text-lg leading-relaxed text-[#0B0B0C]/65">
+              Tell us what you’re planning. Ryon will follow up to discuss the timing, location, and services. This is an inquiry, not a confirmed booking.
+            </p>
+            <p className="mt-6 text-xs uppercase tracking-[0.14em] text-[#0B0B0C]/45">New York time · Event locations outside Manhattan by inquiry</p>
+          </Reveal>
+        </div>
+
+        <div className="md:col-span-7">
+          {receipt ? (
+            <div className="border-y border-[#0B0B0C]/20 py-8" role="status" data-testid="status-event-request-received">
+              <span className="eyebrow mb-5 text-[#0B0B0C]/50">Inquiry received</span>
+              <h3 className="font-serif text-4xl leading-none text-[#0B0B0C] sm:text-5xl">Thank you. We’ll be in touch.</h3>
+              <p className="mt-5 leading-relaxed text-[#0B0B0C]/65">
+                Status: <strong className="font-medium text-[#0B0B0C]">{receipt.status}</strong>. Reference:{' '}
+                <strong className="font-medium text-[#0B0B0C]">{receipt.reference}</strong>. This is not a booking confirmation; your date is not reserved until details are discussed and confirmed.
+              </p>
+              <button
+                type="button"
+                className="mt-7 border border-[#0B0B0C]/25 px-6 py-3 text-xs uppercase tracking-[0.16em] transition-colors hover:bg-[#0B0B0C] hover:text-[#F4F1EA]"
+                onClick={() => setReceipt(null)}
+                data-testid="button-another-event-inquiry"
+              >
+                Send another inquiry
+              </button>
+            </div>
+          ) : (
+            <form ref={formRef} onSubmit={submitEventRequest} className="space-y-7" data-testid="form-event-request">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                <label className={labelClass}>
+                  Contact name
+                  <input required maxLength={120} name="contactName" autoComplete="name" className={fieldClass} data-testid="input-event-contact-name" />
+                </label>
+                <label className={labelClass}>
+                  Email
+                  <input required type="email" maxLength={254} name="contactEmail" autoComplete="email" className={fieldClass} data-testid="input-event-contact-email" />
+                </label>
+              </div>
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                <label className={labelClass}>
+                  Event type
+                  <input required maxLength={120} name="eventType" placeholder="Wedding, celebration, group…" className={fieldClass} data-testid="input-event-type" />
+                </label>
+                <label className={labelClass}>
+                  Number of guests
+                  <input required type="number" min={1} max={1000} step={1} name="numberOfGuests" className={fieldClass} data-testid="input-event-guests" />
+                </label>
+              </div>
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                <label className={labelClass}>
+                  Date
+                  <input required type="date" min={today} name="date" className={fieldClass} data-testid="input-event-date" />
+                </label>
+                <label className={labelClass}>
+                  Ready-by time <span className="normal-case tracking-normal">(New York time)</span>
+                  <input required type="time" name="readyByTime" className={fieldClass} data-testid="input-event-ready-by-time" />
+                </label>
+              </div>
+              <label className={labelClass}>
+                Location <span className="normal-case tracking-normal">(address or venue)</span>
+                <input required maxLength={500} name="location" placeholder="Street address or venue name" className={fieldClass} data-testid="input-event-location" />
+              </label>
+              <label className={labelClass}>
+                Services needed
+                <textarea required maxLength={2000} name="servicesNeeded" rows={3} placeholder="Tell us what services you have in mind." className={cn(fieldClass, 'resize-y')} data-testid="input-event-services" />
+              </label>
+              <label className={labelClass}>
+                Anything we should know? <span className="normal-case tracking-normal">(optional)</span>
+                <textarea maxLength={4000} name="notes" rows={3} placeholder="Schedule, access, or other details." className={cn(fieldClass, 'resize-y')} data-testid="input-event-notes" />
+              </label>
+              {createRequest.isError && (
+                <p role="alert" className="border-l-2 border-[#5D1612] pl-4 text-sm leading-relaxed text-[#5D1612]" data-testid="error-event-request">
+                  {eventRequestError(createRequest.error)}
+                </p>
+              )}
+              <div className="flex flex-col items-start gap-3 pt-2">
+                <Button type="submit" size="lg" disabled={createRequest.isPending} data-testid="button-submit-event-request">
+                  {createRequest.isPending ? 'Sending inquiry…' : 'Send event inquiry'}
+                </Button>
+                <p className="text-xs leading-relaxed text-[#0B0B0C]/50">Submitting this form does not reserve a date or confirm an event booking.</p>
+              </div>
+            </form>
+          )}
         </div>
       </div>
     </section>
@@ -330,6 +504,7 @@ export default function Home() {
         <Philosophy />
         <WhereWeWork />
         <Closing onBook={openBooking} />
+        <EventRequest />
       </main>
       <Footer />
       {bookingOpen && (
