@@ -45,7 +45,7 @@ function Reveal({ children, className }: { children: ReactNode; className?: stri
 
 function Hero({ onChoose }: { onChoose: (mode: VisitMode) => void }) {
   return (
-    <section className="relative w-full min-h-[100dvh] h-auto flex items-center pt-24 pb-24 overflow-hidden section-dark">
+    <section className="relative w-full min-h-[100dvh] h-auto flex items-center pt-32 pb-24 md:pt-36 overflow-hidden section-dark">
       {/* Background with parallax effect */}
       <div 
         className="hero-background absolute inset-0 z-0 bg-center bg-no-repeat transition-transform duration-[10000ms] ease-out hover:scale-105 scale-100"
@@ -56,7 +56,7 @@ function Hero({ onChoose }: { onChoose: (mode: VisitMode) => void }) {
       />
       {/* Heavy black scrim */}
       <div className="absolute inset-0 z-10 bg-[#0B0B0C]/80" />
-      <div className="container relative lg:-top-8 z-20 mx-auto px-6 md:px-12 h-full flex flex-col justify-center animate-in fade-in slide-in-from-bottom-8 duration-1000">
+      <div className="container relative z-20 mx-auto px-6 md:px-12 flex flex-col justify-center animate-in fade-in slide-in-from-bottom-8 duration-1000">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute right-5 top-1/2 hidden -translate-y-1/2 select-none text-[clamp(4rem,9vw,9rem)] font-sans font-bold uppercase leading-[0.8] tracking-[-0.08em] text-[#F4F1EA]/10 [writing-mode:vertical-rl] rotate-180 lg:block"
