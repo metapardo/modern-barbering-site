@@ -1,0 +1,1 @@
+- [Brand naming](brand-naming.md) — Use “Modern Barbering NYC” as the public brand name.

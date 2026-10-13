@@ -83,7 +83,7 @@ function Header({ onBook }: { onBook: () => void }) {
           }}
           className="shrink-0 text-left font-serif text-lg leading-none tracking-wide text-[#F4F1EA] transition-opacity hover:opacity-70 sm:text-xl"
         >
-          MODERN BARBERING
+          Modern Barbering NYC
         </button>
         
         <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-8">
@@ -162,12 +162,12 @@ function Hero({ onChoose }: { onChoose: (mode: VisitMode) => void }) {
       <div className="absolute inset-0 z-10 bg-[#0B0B0C]/80" />
       
       <div className="container relative z-20 mx-auto px-6 md:px-12 h-full flex flex-col justify-center animate-in fade-in slide-in-from-bottom-8 duration-1000">
-        <span className="eyebrow text-[#F4F1EA]/70 font-semibold">Modern Barbering</span>
+        <span className="eyebrow text-[#F4F1EA]/70 font-semibold">Modern Barbering NYC</span>
         <div
           aria-hidden="true"
           className="pointer-events-none absolute right-5 top-1/2 hidden -translate-y-1/2 select-none text-[clamp(4rem,9vw,9rem)] font-sans font-bold uppercase leading-[0.8] tracking-[-0.08em] text-[#F4F1EA]/10 [writing-mode:vertical-rl] rotate-180 lg:block"
         >
-          Modern Barbering
+          Modern Barbering NYC
         </div>
         
         <h1 className="headline-huge text-[#F4F1EA] mb-12 max-w-5xl">
@@ -176,8 +176,8 @@ function Hero({ onChoose }: { onChoose: (mode: VisitMode) => void }) {
         </h1>
         
         <div className="max-w-md ml-0 lg:ml-24">
-          <p className="text-lg md:text-xl text-[#F4F1EA]/80 mb-10 leading-relaxed font-light">
-            Get ready — on the move, or in the salon. Modern Barbering prepares you for the future ahead.
+          <p className="text-[1.0125rem] md:text-[1.125rem] text-[#F4F1EA]/80 mb-10 leading-relaxed font-light">
+            Get ready — on the move, or in the salon. Modern Barbering NYC prepares you for the future ahead.
           </p>
           
           <div className="grid w-full max-w-xl grid-cols-1 gap-3 sm:grid-cols-2">
@@ -415,7 +415,7 @@ function Footer() {
       <div className="container mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-12">
           <div className="font-serif text-2xl tracking-widest text-[#F4F1EA]">
-            MODERN BARBERING
+            Modern Barbering NYC
           </div>
           <div className="flex items-center gap-8 text-xs tracking-widest uppercase text-[#F4F1EA]/50">
             <a href="#choices" className="hover:text-[#F4F1EA] transition-colors">How it works</a>
@@ -426,7 +426,7 @@ function Footer() {
         </div>
         <div className="h-px w-full bg-[#F4F1EA]/10 mb-8" />
         <div className="text-xs tracking-widest text-[#F4F1EA]/30 text-center md:text-left">
-          © {new Date().getFullYear()} MODERN BARBERING
+          © {new Date().getFullYear()} Modern Barbering NYC
         </div>
       </div>
     </footer>
