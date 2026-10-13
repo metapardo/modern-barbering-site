@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, type ReactNode } from 'react';
 import { Button } from '@/components/ui/button';
 import heroImage from '@assets/np_New_York_city_skyline_at_sunset_0PJag4_large_1787701674333.jpg';
 import salonImage from '@assets/generated_images/salon-empty-chair.jpg';
-import mobileImage from '@assets/generated_images/mobile.jpg';
+import mobileImage from '@assets/Agent_Image_-_Convert_this_photograph_to_black_and_white_with__1791909001531.png';
 import { cn } from '@/lib/utils';
 
 type VisitMode = 'salon' | 'mobile';
