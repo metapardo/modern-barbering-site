@@ -136,6 +136,23 @@
   background-size: 100% 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+header a:focus-visible,
+header button:focus-visible {
+  outline: 2px solid #F4F1EA;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 @media (max-width: 767px) {
   .hero-background {
     background-size: cover;

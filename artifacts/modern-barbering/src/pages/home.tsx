@@ -42,52 +42,59 @@ function Reveal({ children, className }: { children: ReactNode; className?: stri
 
 function Header({ onBook }: { onBook: () => void }) {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const links = [
+    { id: 'choices', label: 'How it works' },
+    { id: 'locations', label: 'Locations' },
+    { id: 'philosophy', label: 'Philosophy' },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  useEffect(() => {
+    const handleKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMenuOpen(false);
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, []);
 
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-700 border-b',
-        scrolled 
-          ? 'bg-[#0B0B0C] border-[#F4F1EA]/10 py-4' 
-          : 'bg-transparent border-transparent py-6'
+        'fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-500',
+        scrolled || menuOpen
+          ? 'bg-[#0B0B0C]/95 backdrop-blur-md border-[#F4F1EA]/15'
+          : 'bg-[#0B0B0C]/20 border-[#F4F1EA]/10'
       )}
     >
-      <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
+      <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between gap-4 px-5 md:px-12">
         <button 
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="font-serif text-xl tracking-wide text-[#F4F1EA] hover:opacity-70 transition-opacity"
+          onClick={() => {
+            setMenuOpen(false);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          className="shrink-0 text-left font-serif text-lg leading-none tracking-wide text-[#F4F1EA] transition-opacity hover:opacity-70 sm:text-xl"
         >
           MODERN BARBERING
         </button>
         
-        <nav className="hidden md:flex items-center gap-8">
-          {[
-            { id: 'choices', label: 'How it works' },
-            { id: 'locations', label: 'Locations' },
-            { id: 'philosophy', label: 'Philosophy' },
-          ].map((item) => (
-            <button
+        <nav aria-label="Main navigation" className="hidden lg:flex items-center gap-8">
+          {links.map((item) => (
+            <a
               key={item.id}
-              onClick={() => scrollToSection(item.id)}
-              className="text-[#F4F1EA] text-xs tracking-widest uppercase hover:text-primary transition-colors"
+              href={`#${item.id}`}
+              className="flex min-h-11 items-center whitespace-nowrap border-b border-transparent text-xs tracking-widest uppercase text-[#F4F1EA]/80 transition-colors hover:border-[#F4F1EA]/60 hover:text-[#F4F1EA]"
             >
               {item.label}
-            </button>
+            </a>
           ))}
           <Button 
             variant="default" 
@@ -98,17 +105,44 @@ function Header({ onBook }: { onBook: () => void }) {
           </Button>
         </nav>
 
-        {/* Mobile booking button always visible */}
-        <div className="md:hidden">
+        <div className="flex shrink-0 items-center gap-2 lg:hidden">
           <Button 
             variant="default" 
             size="sm" 
-            onClick={onBook}
+            onClick={() => {
+              setMenuOpen(false);
+              onBook();
+            }}
           >
             Book
           </Button>
+          <button
+            type="button"
+            aria-label={menuOpen ? 'Close navigation' : 'Open navigation'}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="flex h-11 w-11 flex-col items-center justify-center gap-1.5 text-[#F4F1EA]"
+          >
+            <span className={cn('h-px w-5 bg-current transition-transform', menuOpen && 'translate-y-1 rotate-45')} />
+            <span className={cn('h-px w-5 bg-current transition-transform', menuOpen && '-translate-y-1 -rotate-45')} />
+          </button>
         </div>
       </div>
+      {menuOpen && (
+        <nav id="mobile-navigation" aria-label="Mobile navigation" className="border-t border-[#F4F1EA]/15 px-6 pb-6 pt-3 lg:hidden">
+          {links.map((item) => (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              onClick={() => setMenuOpen(false)}
+              className="block border-b border-[#F4F1EA]/10 py-5 text-sm uppercase tracking-[0.16em] text-[#F4F1EA] hover:text-[#F4F1EA]/70"
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      )}
     </header>
   );
 }
