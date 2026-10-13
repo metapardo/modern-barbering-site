@@ -160,9 +160,7 @@ function Hero({ onChoose }: { onChoose: (mode: VisitMode) => void }) {
       />
       {/* Heavy black scrim */}
       <div className="absolute inset-0 z-10 bg-[#0B0B0C]/80" />
-      
-      <div className="container relative z-20 mx-auto px-6 md:px-12 h-full flex flex-col justify-center animate-in fade-in slide-in-from-bottom-8 duration-1000">
-        <span className="eyebrow text-[#F4F1EA]/70 font-semibold">Modern Barbering NYC</span>
+      <div className="container relative lg:-top-8 z-20 mx-auto px-6 md:px-12 h-full flex flex-col justify-center animate-in fade-in slide-in-from-bottom-8 duration-1000">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute right-5 top-1/2 hidden -translate-y-1/2 select-none text-[clamp(4rem,9vw,9rem)] font-sans font-bold uppercase leading-[0.8] tracking-[-0.08em] text-[#F4F1EA]/10 [writing-mode:vertical-rl] rotate-180 lg:block"
@@ -170,7 +168,7 @@ function Hero({ onChoose }: { onChoose: (mode: VisitMode) => void }) {
           Modern Barbering NYC
         </div>
         
-        <h1 className="headline-huge text-[#F4F1EA] mb-12 max-w-5xl">
+        <h1 className="headline-huge text-[#F4F1EA] mb-8 max-w-5xl">
           One chair<br />
           for all your moments.
         </h1>
@@ -202,7 +200,6 @@ function Hero({ onChoose }: { onChoose: (mode: VisitMode) => void }) {
           </div>
         </div>
       </div>
-
       <div className="absolute bottom-8 left-6 md:left-12 z-20 flex flex-col items-center gap-4">
         <div className="w-[1px] h-12 bg-[#F4F1EA]/30" />
       </div>
