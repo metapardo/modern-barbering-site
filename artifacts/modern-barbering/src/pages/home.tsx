@@ -115,7 +115,7 @@ function WhyItMatters() {
             </div>
             
             <div className="lg:col-span-4 lg:pt-4">
-              <p className="max-w-md text-lg text-[#0B0B0C]/70 leading-relaxed font-light">
+              <p className="max-w-md text-[1.35rem] text-[#0B0B0C]/70 leading-relaxed font-light">
                 The interview, the flight out, the stage, the first date, the day you needed to look like you meant it. We prepare you for the moments that require your absolute best.
               </p>
             </div>
