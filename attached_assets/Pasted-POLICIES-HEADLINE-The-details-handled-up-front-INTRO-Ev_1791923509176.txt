@@ -1,0 +1,127 @@
+POLICIES
+
+HEADLINE:
+The details,
+handled up front.
+
+INTRO:
+Every appointment is time reserved for you alone. These policies protect that time, for you and for every guest who sits in the chair after you.
+
+I. BOOKING & CARD ON FILE
+A valid card is required to reserve any appointment, in the salon or on location. Your card is stored securely through Square and is not charged at booking. It is used only for your completed service or, if needed, the fees outlined below.
+
+II. PAYMENT & PROCESSING
+All payments are processed through Square. Card payments include a processing fee of [X%], reflecting what Square charges us for each transaction. The full price, including this fee, is shown before you pay. Debit cards [and cash, if accepted] carry no processing fee.
+
+III. CANCELLATIONS & RESCHEDULING
+Plans change. We ask for at least [24] hours’ notice to cancel or reschedule. Cancellations made within [24] hours of your appointment are charged [50%] of the service price. Rescheduling with proper notice is always free.
+
+IV. LATE ARRIVALS & NO-SHOWS
+We hold your chair for [10] minutes. After that, your service may be shortened or rescheduled so the next guest isn’t kept waiting. Missed appointments without notice are charged [100%] of the service price.
+
+V. MOBILE SERVICE AREA
+The mobile chair currently serves Manhattan only. For locations outside Manhattan, including events, reach out before booking and we’ll let you know what’s possible.
+
+VI. PREPARING FOR A MOBILE VISIT
+The chair travels with everything it needs. We ask for a space roughly [6 x 6] feet with good lighting and access to a standard outlet. Please share any building access, doorman, or parking details when booking. If we arrive and are unable to access the location, the appointment is treated as a late cancellation.
+
+VII. EVENTS & GROUP BOOKINGS
+Weddings, celebrations, and group appointments are arranged by inquiry and confirmed with a non-refundable deposit of [X%], applied to your final balance. Event cancellations require [14] days’ notice. Changes to headcount should be shared at least [72] hours before the event so we can adjust the schedule.
+
+VIII. RETURNING GUESTS
+Guests who have been with us keep their rate. Loyalty is something we honor, not something we reprice.
+
+IX. HEALTH & SAFETY
+Tools are cleaned and sanitized between every guest. If you’re feeling unwell, let us know and we’ll reschedule without a fee. We may do the same if Ryon is unwell, with as much notice as possible.
+
+X. YOUNG GUESTS
+Guests under 18 must be accompanied by a parent or guardian for the duration of the service.
+
+XI. SATISFACTION & ADJUSTMENTS
+If something isn’t right, tell us within [7] days and we’ll schedule a complimentary adjustment. Because each service is time and craft already given, completed services are not refundable.
+
+XII. GRATUITY
+Gratuity is never expected and always appreciated. It can be added through Square at checkout.
+
+XIII. PHOTOGRAPHY & PRIVACY
+We’ll always ask before photographing or sharing your cut. Your payment and contact details are handled through Square and are never sold or shared.
+
+XIV. THE ROOM WE KEEP
+We reserve the right to decline or end any service where the environment is unsafe or a guest is disrespectful. The chair is a place of focus, and we keep it that way.
+
+XV. DELAYS & WEATHER
+New York traffic and weather are part of the work. If we’re running behind on a mobile visit, you’ll hear from us right away. In severe weather, we’ll reschedule at no charge.
+
+CLOSING LINE:
+Questions about any of this? Ask before you book. We’d rather you sit down certain.
+
+BUTTON: BOOK NOW
+
+Two things worth checking before this goes live:
+
+The homepage conflicts with the Manhattan-only rule. The Locations section currently says “Manhattan, Brooklyn, and beyond,” so that line should be updated to match.
+
+New York’s surcharge law shapes how section II has to work. Businesses that add a credit card surcharge must clearly post the total credit card price, including the surcharge, before payment, and the surcharge can’t exceed what the card company actually charges the business. A sign stating that card purchases carry a surcharge is no longer enough on its own, so the fee-inclusive price needs to show in Square at checkout, not just on this page. Surcharges also can’t be applied to debit card transactions, which is why the copy exempts them. Violations can carry civil penalties of up to $500 each. I’m not a lawyer, so it’s worth confirming the setup with Square or an advisor. 
+[New York’s New Credit Surcharge Law Takes Effect +3](https://www.olshanlaw.com/Advertising-Law-Blog/new-yorks-new-credit-surcharge-law-takes-effect)
+
+Sources:
+
+[New York’s New Credit Surcharge Law Takes Effect (Olshan)](https://www.olshanlaw.com/Advertising-Law-Blog/new-yorks-new-credit-surcharge-law-takes-effect)
+[News12: NY stores now required to post credit card charges](https://bronx.news12.com/new-york-stores-are-now-required-to-post-the-extra-charges-for-paying-with-a-credit-card)
+[Digital Transactions: Clarity on surcharging rules](https://www.digitaltransactions.net/as-more-interest-in-surcharging-emerges-so-too-comes-some-clarity-on-the-rules/)
+
+remove 6 and 11 and 14
+
+Renumbering sections after removing several entries.
+
+Here’s the updated page with those three removed and the rest renumbered.
+
+EYEBROW: POLICIES
+
+HEADLINE:
+The details,
+handled up front.
+
+INTRO:
+Every appointment is time reserved for you alone. These policies protect that time, for you and for every guest who sits in the chair after you.
+
+I. BOOKING & CARD ON FILE
+A valid card is required to reserve any appointment, in the salon or on location. Your card is stored securely through Square and is not charged at booking. It is used only for your completed service or, if needed, the fees outlined below.
+
+II. PAYMENT & PROCESSING
+All payments are processed through Square. Card payments include a processing fee of [X%], reflecting what Square charges us for each transaction. The full price, including this fee, is shown before you pay. Debit cards [and cash, if accepted] carry no processing fee.
+
+III. CANCELLATIONS & RESCHEDULING
+Plans change. We ask for at least [24] hours’ notice to cancel or reschedule. Cancellations made within [24] hours of your appointment are charged [50%] of the service price. Rescheduling with proper notice is always free.
+
+IV. LATE ARRIVALS & NO-SHOWS
+We hold your chair for [10] minutes. After that, your service may be shortened or rescheduled so the next guest isn’t kept waiting. Missed appointments without notice are charged [100%] of the service price.
+
+V. MOBILE SERVICE AREA
+The mobile chair currently serves Manhattan only. For locations outside Manhattan, including events, reach out before booking and we’ll let you know what’s possible.
+
+VI. EVENTS & GROUP BOOKINGS
+Weddings, celebrations, and group appointments are arranged by inquiry and confirmed with a non-refundable deposit of [X%], applied to your final balance. Event cancellations require [14] days’ notice. Changes to headcount should be shared at least [72] hours before the event so we can adjust the schedule.
+
+VII. RETURNING GUESTS
+Guests who have been with us keep their rate. Loyalty is something we honor, not something we reprice.
+
+VIII. HEALTH & SAFETY
+Tools are cleaned and sanitized between every guest. If you’re feeling unwell, let us know and we’ll reschedule without a fee. We may do the same if Ryon is unwell, with as much notice as possible.
+
+IX. YOUNG GUESTS
+Guests under 18 must be accompanied by a parent or guardian for the duration of the service.
+
+X. GRATUITY
+Gratuity is never expected and always appreciated. It can be added through Square at checkout.
+
+XI. PHOTOGRAPHY & PRIVACY
+We’ll always ask before photographing or sharing your cut. Your payment and contact details are handled through Square and are never sold or shared.
+
+XII. DELAYS & WEATHER
+New York traffic and weather are part of the work. If we’re running behind on a mobile visit, you’ll hear from us right away. In severe weather, we’ll reschedule at no charge.
+
+CLOSING LINE:
+Questions about any of this? Ask before you book. We’d rather you sit down certain.
+
+BUTTON: BOOK NOW
