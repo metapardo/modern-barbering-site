@@ -1,10 +1,11 @@
-import { type ReactNode } from 'react';
+import { useEffect, type ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import Home from '@/pages/home';
+import About from '@/pages/about';
 import {
   Route,
   Switch,
@@ -19,6 +20,7 @@ function Router() {
     <RoutedErrorBoundary>
       <Switch>
         <Route path="/" component={Home} />
+        <Route path="/about" component={About} />
         <Route component={NotFound} />
       </Switch>
     </RoutedErrorBoundary>
@@ -27,6 +29,13 @@ function Router() {
 
 function RoutedErrorBoundary({ children }: { children: ReactNode }) {
   const [location] = useLocation();
+  useEffect(() => {
+    if (!window.location.hash) return;
+    const frame = requestAnimationFrame(() => {
+      document.getElementById(window.location.hash.slice(1))?.scrollIntoView();
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [location]);
   return <ErrorBoundary resetKey={location}>{children}</ErrorBoundary>;
 }
 
