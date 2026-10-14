@@ -187,6 +187,7 @@ function HowYouArrive() {
 }
 
 function ChooseYourChair({ onChoose }: { onChoose: (mode: VisitMode) => void }) {
+  const actionClass = 'inline-flex min-h-12 w-full items-center justify-center border border-[#0B0B0C]/25 px-4 py-4 text-xs font-medium uppercase tracking-[0.12em] text-[#0B0B0C] transition-colors hover:border-primary hover:bg-primary hover:text-[#F4F1EA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4';
   const steps = [
     ['01', 'Choose your chair', 'Head to 50 West 17th, or have the chair arrive at your door.'],
     ['02', 'Tell us the moment', 'Share the date, time, and—if we are coming to you—your location.'],
@@ -210,31 +211,30 @@ function ChooseYourChair({ onChoose }: { onChoose: (mode: VisitMode) => void }) 
 
         <div className="mt-16 grid grid-cols-1 border-y border-[#0B0B0C]/15 md:grid-cols-3">
           {steps.map(([number, title, copy], index) => (
-            <Reveal key={number} className={cn('p-8 md:p-10 lg:p-12', index > 0 && 'border-t border-[#0B0B0C]/15 md:border-l md:border-t-0')}>
+            <Reveal key={number} className={cn('flex h-full flex-col p-8 md:p-6 lg:p-12', index > 0 && 'border-t border-[#0B0B0C]/15 md:border-l md:border-t-0')}>
               <span className="font-serif text-5xl text-primary">{number}</span>
               <h3 className="mt-10 text-sm font-medium uppercase tracking-[0.16em] text-[#0B0B0C]">{title}</h3>
               <p className="mt-4 max-w-xs leading-relaxed text-[#0B0B0C]/65">{copy}</p>
+              <div className="mt-auto pt-8">
+                {index === 2 ? (
+                  <a href="#event-request" className={actionClass} data-testid="link-request-event">
+                    Request Event
+                  </a>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => onChoose(index === 0 ? 'salon' : 'mobile')}
+                    className={actionClass}
+                    data-testid={index === 0 ? 'button-choices-salon' : 'button-choices-mobile'}
+                  >
+                    {index === 0 ? 'Book Salon' : 'Book Mobile'}
+                  </button>
+                )}
+              </div>
             </Reveal>
           ))}
         </div>
 
-        <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-          <Button size="lg" onClick={() => onChoose('salon')}>Choose the salon</Button>
-          <button
-            type="button"
-            onClick={() => onChoose('mobile')}
-            className="border border-[#0B0B0C]/25 px-7 py-4 text-xs font-medium uppercase tracking-[0.16em] text-[#0B0B0C] transition-colors hover:border-[#0B0B0C] hover:bg-[#0B0B0C] hover:text-[#F4F1EA]"
-          >
-            Choose on the go
-          </button>
-          <a
-            href="#event-request"
-            className="inline-flex min-h-12 items-center justify-center border border-[#0B0B0C]/25 px-7 py-4 text-xs font-medium uppercase tracking-[0.16em] text-[#0B0B0C] transition-colors hover:border-[#0B0B0C] hover:bg-[#0B0B0C] hover:text-[#F4F1EA]"
-            data-testid="link-request-event"
-          >
-            Request an Event
-          </a>
-        </div>
       </div>
     </section>
   );
