@@ -12,43 +12,19 @@ const policies = [
   },
   {
     title: 'Payment & Processing',
-    copy: 'All payments are processed through Square. Card payments include a processing fee of [X%], reflecting what Square charges us for each transaction. The full price, including this fee, is shown before you pay. Debit cards [and cash, if accepted] carry no processing fee.',
+    copy: 'All payments are processed through Square. Card payments include a processing fee of 4%, reflecting what Square charges us for each transaction. The full price, including this fee, is shown before you pay.',
   },
   {
     title: 'Cancellations & Rescheduling',
     copy: 'Plans change. We ask for at least [24] hours’ notice to cancel or reschedule. Cancellations made within [24] hours of your appointment are charged [50%] of the service price. Rescheduling with proper notice is always free.',
   },
   {
-    title: 'Late Arrivals & No-Shows',
-    copy: 'We hold your chair for [10] minutes. After that, your service may be shortened or rescheduled so the next guest isn’t kept waiting. Missed appointments without notice are charged [100%] of the service price.',
-  },
-  {
     title: 'Mobile Service Area',
     copy: 'The mobile chair currently serves Manhattan only. For locations outside Manhattan, including events, reach out before booking and we’ll let you know what’s possible.',
   },
   {
-    title: 'Events & Group Bookings',
-    copy: 'Weddings, celebrations, and group appointments are arranged by inquiry and confirmed with a non-refundable deposit of [X%], applied to your final balance. Event cancellations require [14] days’ notice. Changes to headcount should be shared at least [72] hours before the event so we can adjust the schedule.',
-  },
-  {
-    title: 'Returning Guests',
-    copy: 'Guests who have been with us keep their rate. Loyalty is something we honor, not something we reprice.',
-  },
-  {
     title: 'Health & Safety',
     copy: 'Tools are cleaned and sanitized between every guest. If you’re feeling unwell, let us know and we’ll reschedule without a fee. We may do the same if Ryon is unwell, with as much notice as possible.',
-  },
-  {
-    title: 'Young Guests',
-    copy: 'Guests under 18 must be accompanied by a parent or guardian for the duration of the service.',
-  },
-  {
-    title: 'Gratuity',
-    copy: 'Gratuity is never expected and always appreciated. It can be added through Square at checkout.',
-  },
-  {
-    title: 'Photography & Privacy',
-    copy: 'We’ll always ask before photographing or sharing your cut. Your payment and contact details are handled through Square and are never sold or shared.',
   },
   {
     title: 'Delays & Weather',
