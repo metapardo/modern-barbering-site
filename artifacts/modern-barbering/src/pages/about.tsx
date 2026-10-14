@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import portrait from '@assets/About_shot_1791910213048.png';
+import portrait from '@assets/Agent_Image_-_Convert_this_photograph_to_black_and_white_clean_1792005020781.png';
 import { Footer, Header } from '@/components/site-navigation';
 
 const ABOUT_TITLE = 'Ryon — About | Modern Barbering NYC';
@@ -57,9 +57,9 @@ export default function About() {
           <figure className="mx-auto mt-10 w-full max-w-[360px] sm:mt-14">
             <img
               src={portrait}
-              alt="Ryon, founder of Modern Barbering NYC"
+              alt="Ryon cutting a client's hair at Modern Barbering NYC"
               data-testid="img-ryon-portrait"
-              className="aspect-square w-full object-cover object-center"
+              className="aspect-[3/4] w-full object-cover object-center"
             />
             <figcaption className="mt-3 text-left text-[10px] uppercase tracking-[0.18em] text-[#F4F1EA]/35">
               The person behind the chair
