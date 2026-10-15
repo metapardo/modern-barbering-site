@@ -190,7 +190,7 @@ function ChooseYourChair({ onChoose }: { onChoose: (mode: VisitMode) => void }) 
   const actionClass = 'inline-flex min-h-12 w-full items-center justify-center border border-[#0B0B0C]/25 px-4 py-4 text-xs font-medium uppercase tracking-[0.12em] text-[#0B0B0C] transition-colors hover:border-primary hover:bg-primary hover:text-[#F4F1EA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4';
   const steps = [
     ['01', 'Choose your chair', 'Head to 50 West 17th, or have the chair arrive at your door.'],
-    ['02', 'Tell us the moment', 'Share the date, time, and—if we are coming to you—your location.'],
+    ['02', 'Tell us the moment', 'Share the date and your location.'],
     ['03', 'Events', 'Wedding mornings, celebrations, and group appointments arranged around your day.'],
   ];
 
