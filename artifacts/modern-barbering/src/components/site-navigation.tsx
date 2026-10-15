@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'wouter';
+import { Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -165,39 +166,52 @@ export function Header({ onBook, activeAbout = false, activePolicies = false }: 
   );
 }
 
-export function Footer() {
+export function Footer({ onBook }: { onBook: () => void }) {
   const links = [
     { href: '/#choices', label: 'How it works' },
     { href: '/#locations', label: 'Locations' },
-    { href: '/#philosophy', label: 'Philosophy' },
     { href: '/about', label: 'About' },
-    { href: '/#booking', label: 'Contact' },
     { href: '/policies', label: 'Policies' },
   ];
 
   return (
     <footer className="border-t border-[#F4F1EA]/10 py-12 section-dark">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="mb-12 flex flex-col items-center justify-between gap-8 md:flex-row">
+        <div className="mb-12 flex flex-col items-center justify-between gap-8 xl:flex-row">
           <Link
             href="/"
             data-testid="link-footer-logo"
-            className="font-serif text-2xl tracking-widest text-[#F4F1EA] transition-opacity hover:opacity-70"
+            className="shrink-0 font-serif text-2xl tracking-widest text-[#F4F1EA] transition-opacity hover:opacity-70"
           >
             Modern Barbering NYC
           </Link>
-          <nav aria-label="Footer navigation" className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-xs uppercase tracking-widest text-[#F4F1EA]/50">
+          <div className="flex max-w-full flex-col items-center gap-6 sm:flex-row">
+          <nav aria-label="Footer navigation" className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs uppercase tracking-widest text-[#F4F1EA]/50">
             {links.map((item) => (
               <a
                 key={item.href}
                 href={`${import.meta.env.BASE_URL}${item.href.slice(1)}`}
                 data-testid={`link-footer-${item.label.toLowerCase().replaceAll(' ', '-')}`}
-                className="transition-colors hover:text-[#F4F1EA]"
+                className="inline-flex min-h-11 items-center transition-colors hover:text-[#F4F1EA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F4F1EA]/60"
               >
                 {item.label}
               </a>
             ))}
-        </nav>
+            <Button type="button" size="sm" onClick={() => onBook()} data-testid="button-footer-book-now">
+              Book Now
+            </Button>
+          </nav>
+          <a
+            href="https://www.instagram.com/modernbarbering_ryon/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Modern Barbering NYC on Instagram (opens in a new tab)"
+            data-testid="link-footer-instagram"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center border border-[#F4F1EA]/20 text-[#F4F1EA]/65 transition-colors hover:border-[#F4F1EA]/60 hover:text-[#F4F1EA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F4F1EA]/60"
+          >
+            <Instagram aria-hidden="true" size={20} strokeWidth={1.5} />
+          </a>
+          </div>
         </div>
         <div className="mb-8 h-px w-full bg-[#F4F1EA]/10" />
         <div className="text-center text-xs tracking-widest text-[#F4F1EA]/30 md:text-left">

@@ -121,7 +121,7 @@ export default function Policies() {
           </button>
         </section>
       </main>
-      <Footer />
+      <Footer onBook={goToBooking} />
     </div>
   );
 }

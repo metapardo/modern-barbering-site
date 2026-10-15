@@ -506,7 +506,7 @@ export default function Home() {
         <Closing onBook={openBooking} />
         <EventRequest />
       </main>
-      <Footer />
+      <Footer onBook={openBooking} />
       {bookingOpen && (
         <div
           className="fixed inset-0 z-[60] flex items-end justify-center bg-[#0B0B0C]/80 p-4 backdrop-blur-sm sm:items-center"

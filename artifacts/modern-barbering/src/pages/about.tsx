@@ -4,7 +4,7 @@ import { Footer, Header } from '@/components/site-navigation';
 
 const ABOUT_TITLE = 'Ryon — About | Modern Barbering NYC';
 const ABOUT_DESCRIPTION =
-  'Meet Ryon, founder of Modern Barbering NYC. Over two decades of trusted barbering, in the Manhattan salon or wherever the chair is needed.';
+  'Meet Ryon, founder of Modern Barbering NYC. More than 25 years of barbering, building relationships in the salon, at home, and at the office.';
 
 export default function About() {
   const goToBooking = () => window.location.assign(`${import.meta.env.BASE_URL}#booking`);
@@ -69,23 +69,13 @@ export default function About() {
 
         <article className="mx-auto mt-12 max-w-[760px] space-y-7 text-[1rem] leading-[1.9] text-[#F4F1EA]/75 sm:mt-16 sm:text-[1.0625rem]">
           <p>
-            I’ve spent over two decades working in New York City’s most respected high-end shops. I came to the States from Guyana over 30 years ago, settling on Long Island, and I’ve been sharpening my craft ever since.
+            What started as a passion for barbering has grown into a career spanning more than 25 years. Since moving from Guyana to the United States 12 years ago, I’ve spent much of that time working in New York City and building lasting relationships through my craft.
           </p>
           <p>
-            Working at establishments like{' '}
-            <a
-              href="https://www.instagram.com/barbering.by.marcus/"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-testid="link-barbering-by-marcus"
-              className="text-[#F4F1EA] underline decoration-[#F4F1EA]/35 underline-offset-4 transition-colors hover:decoration-[#F4F1EA]"
-            >
-              Barbering by Marcus
-            </a>
-            , I’ve had the privilege of serving clients across every industry, from executives and creatives to athletes on your favorite New York teams. Those years taught me that a great cut is about more than technique. It’s about trust, consistency, and making sure every client leaves feeling ready for whatever comes next, whether that’s a boardroom, a big game, or a family celebration.
+            Just before the pandemic, I started Modern Barbering NYC as an independent business. In 2020, I began offering mobile barbering services, bringing the experience directly to my clients.
           </p>
           <p>
-            Just before the pandemic, I took the leap and launched Modern Barbering NYC as my own independent business. In 2020, when the world slowed down, I started bringing the chair to my clients with mobile services. Today, whether you book me at your home, your office, or in the salon, you get the same elevated experience I’ve delivered for over two decades.
+            Today, I continue to do what I’ve always loved, whether it’s in the salon, at a client’s home, or at their office. For me, barbering has always been about the craft, building relationships, and taking pride in the work I do.
           </p>
         </article>
 
@@ -103,7 +93,7 @@ export default function About() {
           </button>
         </div>
       </main>
-      <Footer />
+      <Footer onBook={goToBooking} />
     </div>
   );
 }
