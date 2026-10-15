@@ -95,6 +95,16 @@ export function Header({ onBook, activeAbout = false, activePolicies = false }: 
           <Button variant="default" size="sm" onClick={onBook} data-testid="button-book-now">
             Book Now
           </Button>
+          <a
+            href="https://www.instagram.com/modernbarbering_ryon/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Modern Barbering NYC on Instagram (opens in a new tab)"
+            data-testid="link-header-instagram"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center text-[#F4F1EA]/80 transition-colors hover:text-[#F4F1EA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F4F1EA]/60"
+          >
+            <Instagram aria-hidden="true" size={20} strokeWidth={1.5} />
+          </a>
         </nav>
 
         <div className="flex shrink-0 items-center gap-2 lg:hidden">
@@ -160,6 +170,18 @@ export function Header({ onBook, activeAbout = false, activePolicies = false }: 
           >
             Policies
           </Link>
+          <a
+            href="https://www.instagram.com/modernbarbering_ryon/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Modern Barbering NYC on Instagram (opens in a new tab)"
+            onClick={() => setMenuOpen(false)}
+            data-testid="link-mobile-instagram"
+            className="mt-3 flex min-h-11 items-center gap-3 text-sm uppercase tracking-[0.16em] text-[#F4F1EA]/80 transition-colors hover:text-[#F4F1EA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F4F1EA]/60"
+          >
+            <Instagram aria-hidden="true" size={20} strokeWidth={1.5} />
+            Instagram
+          </a>
         </nav>
       )}
     </header>
