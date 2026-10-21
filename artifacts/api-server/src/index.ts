@@ -1,13 +1,9 @@
 import app from "./app";
 import { logger } from "./lib/logger";
 
-const rawPort = process.env["PORT"];
-
-if (!rawPort) {
-  throw new Error(
-    "PORT environment variable is required but was not provided.",
-  );
-}
+// Replit sets PORT for this service. Locally (no PORT), use API_PORT from the
+// root .env, falling back to 5001 (the Vite dev proxy's default target).
+const rawPort = process.env["PORT"] ?? process.env["API_PORT"] ?? "5001";
 
 const port = Number(rawPort);
 

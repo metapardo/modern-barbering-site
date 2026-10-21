@@ -6,6 +6,11 @@ import { logger } from "./lib/logger";
 
 const app: Express = express();
 
+// Behind one reverse proxy in deployment (Replit), so req.ip is the real client
+// address used by the per-IP form rate limits. Override with TRUST_PROXY if needed.
+const trustProxy = process.env.TRUST_PROXY?.trim();
+app.set("trust proxy", !trustProxy ? 1 : /^\d+$/.test(trustProxy) ? Number(trustProxy) : trustProxy);
+
 app.use(
   pinoHttp({
     logger,

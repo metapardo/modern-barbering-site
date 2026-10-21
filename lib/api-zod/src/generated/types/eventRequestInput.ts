@@ -40,4 +40,6 @@ export interface EventRequestInput {
   servicesNeeded: string;
   /** @maxLength 4000 */
   notes?: string;
+  /** Honeypot field. Leave empty; real visitors never see it. */
+  website?: string;
 }

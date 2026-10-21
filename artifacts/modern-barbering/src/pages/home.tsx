@@ -6,9 +6,9 @@ import salonImage from '@assets/Agent_Image_-_Convert_this_photograph_to_black_a
 import mobileImage from '@assets/Agent_Image_-_Convert_this_photograph_to_black_and_white_with__1791909001531.png';
 import { cn } from '@/lib/utils';
 import { useCreateEventRequest } from '@workspace/api-client-react';
+import { SQUARE_BOOKING_URLS } from '@/lib/booking';
 import type { EventRequestInput } from '@workspace/api-client-react';
 
-type VisitMode = 'salon' | 'mobile';
 
 function Reveal({ children, className }: { children: ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -43,7 +43,7 @@ function Reveal({ children, className }: { children: ReactNode; className?: stri
   );
 }
 
-function Hero({ onChoose }: { onChoose: (mode: VisitMode) => void }) {
+function Hero() {
   return (
     <section className="relative w-full min-h-[100dvh] h-auto flex items-center pt-32 pb-24 md:pt-36 overflow-hidden section-dark">
       {/* Background with parallax effect */}
@@ -75,28 +75,32 @@ function Hero({ onChoose }: { onChoose: (mode: VisitMode) => void }) {
           </p>
           
           <div className="grid w-full max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3">
-            <button
-              type="button"
-              onClick={() => onChoose('salon')}
-              className="group min-h-[132px] border border-[#F4F1EA]/35 bg-[#F4F1EA]/5 p-4 text-left transition-colors hover:border-[#F4F1EA] hover:bg-[#F4F1EA] hover:text-[#0B0B0C] sm:p-5"
+            <a
+              href={SQUARE_BOOKING_URLS.salon}
+              target="_blank"
+              rel="noopener"
+              className="group min-h-[132px] border border-[#F4F1EA]/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F4F1EA] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0B0C] bg-[#F4F1EA]/5 p-4 text-left transition-colors hover:border-[#F4F1EA] hover:bg-[#F4F1EA] hover:text-[#0B0B0C] sm:p-5"
             >
               <span className="block text-xs font-medium uppercase tracking-[0.18em]">The salon</span>
               <span className="mt-2 block font-serif text-2xl leading-none">50 West 17th</span>
-              <span className="mt-3 block text-xs uppercase tracking-[0.14em] opacity-60 group-hover:opacity-70">Choose this chair</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => onChoose('mobile')}
-              className="group min-h-[132px] border border-[#F4F1EA]/35 bg-[#F4F1EA]/5 p-4 text-left transition-colors hover:border-[#F4F1EA] hover:bg-[#F4F1EA] hover:text-[#0B0B0C] sm:p-5"
+              <span className="mt-3 block text-xs uppercase tracking-[0.14em] opacity-60 group-hover:opacity-70">Book the salon</span>
+              <span className="sr-only"> (opens Square booking in a new tab)</span>
+            </a>
+            <a
+              href={SQUARE_BOOKING_URLS.mobile}
+              target="_blank"
+              rel="noopener"
+              className="group min-h-[132px] border border-[#F4F1EA]/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F4F1EA] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0B0C] bg-[#F4F1EA]/5 p-4 text-left transition-colors hover:border-[#F4F1EA] hover:bg-[#F4F1EA] hover:text-[#0B0B0C] sm:p-5"
             >
               <span className="block text-xs font-medium uppercase tracking-[0.18em]">On the go</span>
               <span className="mt-2 block font-serif text-2xl leading-none">We come to you</span>
-              <span className="mt-3 block text-xs uppercase tracking-[0.14em] opacity-60 group-hover:opacity-70">Choose your location</span>
-            </button>
+              <span className="mt-3 block text-xs uppercase tracking-[0.14em] opacity-60 group-hover:opacity-70">Book a mobile visit</span>
+              <span className="sr-only"> (opens Square booking in a new tab)</span>
+            </a>
             <button
               type="button"
               onClick={() => document.getElementById('event-request')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group min-h-[132px] border border-[#F4F1EA]/35 bg-[#F4F1EA]/5 p-4 text-left transition-colors hover:border-[#F4F1EA] hover:bg-[#F4F1EA] hover:text-[#0B0B0C] sm:p-5"
+              className="group min-h-[132px] border border-[#F4F1EA]/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F4F1EA] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0B0C] bg-[#F4F1EA]/5 p-4 text-left transition-colors hover:border-[#F4F1EA] hover:bg-[#F4F1EA] hover:text-[#0B0B0C] sm:p-5"
               data-testid="button-hero-events"
             >
               <span className="block text-xs font-medium uppercase tracking-[0.18em]">Events</span>
@@ -186,7 +190,7 @@ function HowYouArrive() {
   );
 }
 
-function ChooseYourChair({ onChoose }: { onChoose: (mode: VisitMode) => void }) {
+function ChooseYourChair() {
   const actionClass = 'inline-flex min-h-12 w-full items-center justify-center border border-[#0B0B0C]/25 px-4 py-4 text-xs font-medium uppercase tracking-[0.12em] text-[#0B0B0C] transition-colors hover:border-primary hover:bg-primary hover:text-[#F4F1EA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4';
   const steps = [
     ['01', 'Choose your chair', 'Head to 50 West 17th, or have the chair arrive at your door.'],
@@ -221,14 +225,16 @@ function ChooseYourChair({ onChoose }: { onChoose: (mode: VisitMode) => void }) 
                     Request Event
                   </a>
                 ) : (
-                  <button
-                    type="button"
-                    onClick={() => onChoose(index === 0 ? 'salon' : 'mobile')}
+                  <a
+                    href={index === 0 ? SQUARE_BOOKING_URLS.salon : SQUARE_BOOKING_URLS.mobile}
+                    target="_blank"
+                    rel="noopener"
                     className={actionClass}
-                    data-testid={index === 0 ? 'button-choices-salon' : 'button-choices-mobile'}
+                    data-testid={index === 0 ? 'link-choices-salon' : 'link-choices-mobile'}
                   >
                     {index === 0 ? 'Book Salon' : 'Book Mobile'}
-                  </button>
+                    <span className="sr-only"> (opens Square booking in a new tab)</span>
+                  </a>
                 )}
               </div>
             </Reveal>
@@ -298,7 +304,10 @@ function WhereWeWork() {
   );
 }
 
-function eventRequestError(error: unknown): string {
+function eventRequestError(
+  error: unknown,
+  fallback = 'We couldn’t send your inquiry just now. Your details are still here—please try again.',
+): string {
   if (error && typeof error === 'object') {
     const value = error as { message?: unknown; data?: unknown; body?: unknown };
     for (const source of [value.data, value.body]) {
@@ -310,7 +319,36 @@ function eventRequestError(error: unknown): string {
     }
     if (typeof value.message === 'string' && value.message.trim()) return value.message;
   }
-  return 'We couldn’t send your inquiry just now. Your details are still here—please try again.';
+  return fallback;
+}
+
+function eventRequestFieldErrors(error: unknown): Record<string, string> {
+  if (error && typeof error === 'object') {
+    const data = (error as { data?: unknown }).data;
+    if (data && typeof data === 'object') {
+      const fieldErrors = (data as { fieldErrors?: unknown }).fieldErrors;
+      if (fieldErrors && typeof fieldErrors === 'object') {
+        const result: Record<string, string> = {};
+        for (const [key, value] of Object.entries(fieldErrors as Record<string, unknown>)) {
+          if (typeof value === 'string') result[key] = value;
+        }
+        return result;
+      }
+    }
+  }
+  return {};
+}
+
+// Hidden spam trap. Real visitors never see or fill it; the server silently discards submissions that do.
+function HoneypotField() {
+  return (
+    <div aria-hidden="true" style={{ position: 'absolute', left: '-10000px', top: 'auto', width: 1, height: 1, overflow: 'hidden' }}>
+      <label>
+        Website
+        <input type="text" name="website" tabIndex={-1} autoComplete="off" defaultValue="" />
+      </label>
+    </div>
+  );
 }
 
 function EventRequest() {
@@ -318,6 +356,25 @@ function EventRequest() {
   const formRef = useRef<HTMLFormElement>(null);
   const submittingRef = useRef(false);
   const [receipt, setReceipt] = useState<{ reference: string; status: 'received' } | null>(null);
+  const receiptRef = useRef<HTMLDivElement>(null);
+  const errorRef = useRef<HTMLParagraphElement>(null);
+  const fieldErrors = createRequest.isError ? eventRequestFieldErrors(createRequest.error) : {};
+  const fieldError = (name: string) =>
+    fieldErrors[name] ? (
+      <span id={`event-error-${name}`} className="mt-2 block text-sm normal-case tracking-normal text-[#5D1612]">
+        {fieldErrors[name]}
+      </span>
+    ) : null;
+  const invalidProps = (name: string) =>
+    fieldErrors[name] ? { 'aria-invalid': true as const, 'aria-describedby': `event-error-${name}` } : {};
+
+  useEffect(() => {
+    if (receipt) receiptRef.current?.focus();
+  }, [receipt]);
+
+  useEffect(() => {
+    if (createRequest.isError) errorRef.current?.focus();
+  }, [createRequest.isError, createRequest.error]);
   const today = new Intl.DateTimeFormat('en-CA', {
     timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit',
   }).format(new Date());
@@ -337,6 +394,7 @@ function EventRequest() {
       location: String(fields.get('location') ?? '').trim(),
       servicesNeeded: String(fields.get('servicesNeeded') ?? '').trim(),
       notes: String(fields.get('notes') ?? '').trim() || undefined,
+      website: String(fields.get('website') ?? '') || undefined,
     };
     submittingRef.current = true;
     createRequest.mutate(
@@ -374,7 +432,7 @@ function EventRequest() {
 
         <div className="md:col-span-7">
           {receipt ? (
-            <div className="border-y border-[#0B0B0C]/20 py-8" role="status" data-testid="status-event-request-received">
+            <div ref={receiptRef} tabIndex={-1} className="border-y border-[#0B0B0C]/20 py-8 outline-none" role="status" data-testid="status-event-request-received">
               <span className="eyebrow mb-5 text-[#0B0B0C]/50">Inquiry received</span>
               <h3 className="font-serif text-4xl leading-none text-[#0B0B0C] sm:text-5xl">Thank you. We’ll be in touch.</h3>
               <p className="mt-5 leading-relaxed text-[#0B0B0C]/65">
@@ -391,51 +449,61 @@ function EventRequest() {
               </button>
             </div>
           ) : (
-            <form ref={formRef} onSubmit={submitEventRequest} className="space-y-7" data-testid="form-event-request">
+            <form ref={formRef} onSubmit={submitEventRequest} className="relative space-y-7" data-testid="form-event-request">
+              <HoneypotField />
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <label className={labelClass}>
                   Contact name
-                  <input required maxLength={120} name="contactName" autoComplete="name" className={fieldClass} data-testid="input-event-contact-name" />
+                  <input required maxLength={120} name="contactName" autoComplete="name" className={fieldClass} data-testid="input-event-contact-name" {...invalidProps('contactName')} />
+                  {fieldError('contactName')}
                 </label>
                 <label className={labelClass}>
                   Email
-                  <input required type="email" maxLength={254} name="contactEmail" autoComplete="email" className={fieldClass} data-testid="input-event-contact-email" />
+                  <input required type="email" maxLength={254} name="contactEmail" autoComplete="email" className={fieldClass} data-testid="input-event-contact-email" {...invalidProps('contactEmail')} />
+                  {fieldError('contactEmail')}
                 </label>
               </div>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <label className={labelClass}>
                   Event type
-                  <input required maxLength={120} name="eventType" placeholder="Wedding, celebration, group…" className={fieldClass} data-testid="input-event-type" />
+                  <input required maxLength={120} name="eventType" placeholder="Wedding, celebration, group…" className={fieldClass} data-testid="input-event-type" {...invalidProps('eventType')} />
+                  {fieldError('eventType')}
                 </label>
                 <label className={labelClass}>
                   Number of guests
-                  <input required type="number" min={1} max={1000} step={1} name="numberOfGuests" className={fieldClass} data-testid="input-event-guests" />
+                  <input required type="number" min={1} max={1000} step={1} name="numberOfGuests" className={fieldClass} data-testid="input-event-guests" {...invalidProps('numberOfGuests')} />
+                  {fieldError('numberOfGuests')}
                 </label>
               </div>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <label className={labelClass}>
                   Date
-                  <input required type="date" min={today} name="date" className={fieldClass} data-testid="input-event-date" />
+                  <input required type="date" min={today} name="date" className={fieldClass} data-testid="input-event-date" {...invalidProps('date')} />
+                  {fieldError('date')}
                 </label>
                 <label className={labelClass}>
                   Ready-by time <span className="normal-case tracking-normal">(New York time)</span>
-                  <input required type="time" name="readyByTime" className={fieldClass} data-testid="input-event-ready-by-time" />
+                  <input required type="time" name="readyByTime" className={fieldClass} data-testid="input-event-ready-by-time" {...invalidProps('readyByTime')} />
+                  {fieldError('readyByTime')}
                 </label>
               </div>
               <label className={labelClass}>
                 Location <span className="normal-case tracking-normal">(address or venue)</span>
-                <input required maxLength={500} name="location" placeholder="Street address or venue name" className={fieldClass} data-testid="input-event-location" />
+                <input required maxLength={500} name="location" placeholder="Street address or venue name" className={fieldClass} data-testid="input-event-location" {...invalidProps('location')} />
+                  {fieldError('location')}
               </label>
               <label className={labelClass}>
                 Services needed
-                <textarea required maxLength={2000} name="servicesNeeded" rows={3} placeholder="Tell us what services you have in mind." className={cn(fieldClass, 'resize-y')} data-testid="input-event-services" />
+                <textarea required maxLength={2000} name="servicesNeeded" rows={3} placeholder="Tell us what services you have in mind." className={cn(fieldClass, 'resize-y')} data-testid="input-event-services" {...invalidProps('servicesNeeded')} />
+                  {fieldError('servicesNeeded')}
               </label>
               <label className={labelClass}>
                 Anything we should know? <span className="normal-case tracking-normal">(optional)</span>
-                <textarea maxLength={4000} name="notes" rows={3} placeholder="Schedule, access, or other details." className={cn(fieldClass, 'resize-y')} data-testid="input-event-notes" />
+                <textarea maxLength={4000} name="notes" rows={3} placeholder="Schedule, access, or other details." className={cn(fieldClass, 'resize-y')} data-testid="input-event-notes" {...invalidProps('notes')} />
+                  {fieldError('notes')}
               </label>
               {createRequest.isError && (
-                <p role="alert" className="border-l-2 border-[#5D1612] pl-4 text-sm leading-relaxed text-[#5D1612]" data-testid="error-event-request">
+                <p ref={errorRef} tabIndex={-1} role="alert" className="border-l-2 border-[#5D1612] pl-4 text-sm leading-relaxed text-[#5D1612] outline-none" data-testid="error-event-request">
                   {eventRequestError(createRequest.error)}
                 </p>
               )}
@@ -476,31 +544,62 @@ function Closing({ onBook }: { onBook: () => void }) {
 
 export default function Home() {
   const [bookingOpen, setBookingOpen] = useState(false);
-  const [bookingSent, setBookingSent] = useState(false);
-  const [bookingMode, setBookingMode] = useState<VisitMode | null>(null);
+  const bookingDialogRef = useRef<HTMLDivElement>(null);
 
-  const openBooking = (mode?: VisitMode) => {
-    setBookingSent(false);
-    setBookingMode(mode ?? null);
-    setBookingOpen(true);
-  };
+  const openBooking = () => setBookingOpen(true);
 
   const closeBooking = () => setBookingOpen(false);
 
-  const handleBookingSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (!bookingMode) return;
-    setBookingSent(true);
-  };
+  // Book Now on /about and /policies links here as /#booking; open the chooser straight away.
+  useEffect(() => {
+    if (window.location.hash === '#booking') setBookingOpen(true);
+  }, []);
+
+  // Keep keyboard focus inside the booking chooser while it's open, and return it afterwards.
+  useEffect(() => {
+    if (!bookingOpen) return;
+    const dialog = bookingDialogRef.current;
+    const opener = document.activeElement as HTMLElement | null;
+    const focusables = () =>
+      Array.from(dialog?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])') ?? []);
+    focusables().find((el) => el.tagName === 'A')?.focus();
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setBookingOpen(false);
+        return;
+      }
+      if (event.key !== 'Tab') return;
+      const items = focusables();
+      if (items.length === 0) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (event.shiftKey && (document.activeElement === first || !dialog?.contains(document.activeElement))) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && (document.activeElement === last || !dialog?.contains(document.activeElement))) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      document.body.style.overflow = previousOverflow;
+      opener?.focus();
+    };
+  }, [bookingOpen]);
 
   return (
     <div className="w-full min-h-[100dvh] bg-[#0B0B0C] text-[#F4F1EA] selection:bg-primary selection:text-[#F4F1EA]">
       <Header onBook={openBooking} />
       <main>
-        <Hero onChoose={openBooking} />
+        <Hero />
         <WhyItMatters />
         <HowYouArrive />
-        <ChooseYourChair onChoose={openBooking} />
+        <ChooseYourChair />
         <Philosophy />
         <WhereWeWork />
         <Closing onBook={openBooking} />
@@ -517,104 +616,53 @@ export default function Home() {
             if (event.target === event.currentTarget) closeBooking();
           }}
         >
-          <div className="relative w-full max-w-xl border border-[#F4F1EA]/15 bg-[#F4F1EA] p-7 text-[#0B0B0C] shadow-2xl sm:p-12">
+          <div ref={bookingDialogRef} className="relative w-full max-w-xl border border-[#F4F1EA]/15 bg-[#F4F1EA] p-7 text-[#0B0B0C] shadow-2xl sm:p-12">
             <button
               type="button"
-              aria-label="Close booking form"
+              aria-label="Close booking options"
               onClick={closeBooking}
               className="absolute right-5 top-5 text-2xl font-light leading-none text-[#0B0B0C]/50 transition-colors hover:text-[#0B0B0C]"
             >
               ×
             </button>
-            {bookingSent ? (
-              <div className="py-8 sm:py-12">
-                <span className="eyebrow text-[#0B0B0C]/50">Request received</span>
-                <h2 id="booking-title" className="mt-5 font-serif text-5xl leading-none sm:text-6xl">
-                  We’ll find the chair.
-                </h2>
-                <p className="mt-6 max-w-md text-base leading-relaxed text-[#0B0B0C]/65">
-                  Thank you. Our team will be in touch shortly to find the right moment and setting for your visit.
-                </p>
-                <Button type="button" size="lg" className="mt-10" onClick={closeBooking}>
-                  Done
-                </Button>
+            <span className="eyebrow text-[#0B0B0C]/50">Book your moment</span>
+            <h2 id="booking-title" className="mt-5 max-w-md font-serif text-5xl leading-none sm:text-6xl">
+              Choose where the chair meets you.
+            </h2>
+            <div className="mt-10">
+              <p className="text-xs font-medium uppercase tracking-[0.16em] text-[#0B0B0C]/55">
+                Start with a setting
+              </p>
+              <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <a
+                  href={SQUARE_BOOKING_URLS.salon}
+                  target="_blank"
+                  rel="noopener"
+                  onClick={closeBooking}
+                  className="border border-[#0B0B0C]/20 p-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5D1612] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4F1EA] transition-colors hover:border-[#5D1612] hover:bg-[#5D1612] hover:text-[#F4F1EA]"
+                  data-testid="link-book-salon"
+                >
+                  <span className="block text-xs font-medium uppercase tracking-[0.16em]">The salon</span>
+                  <span className="mt-2 block font-serif text-2xl leading-none">50 West 17th</span>
+                  <span className="sr-only"> (opens Square booking in a new tab)</span>
+                </a>
+                <a
+                  href={SQUARE_BOOKING_URLS.mobile}
+                  target="_blank"
+                  rel="noopener"
+                  onClick={closeBooking}
+                  className="border border-[#0B0B0C]/20 p-5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5D1612] focus-visible:ring-offset-2 focus-visible:ring-offset-[#F4F1EA] transition-colors hover:border-[#5D1612] hover:bg-[#5D1612] hover:text-[#F4F1EA]"
+                  data-testid="link-book-mobile"
+                >
+                  <span className="block text-xs font-medium uppercase tracking-[0.16em]">On the go</span>
+                  <span className="mt-2 block font-serif text-2xl leading-none">We come to you</span>
+                  <span className="sr-only"> (opens Square booking in a new tab)</span>
+                </a>
               </div>
-            ) : (
-              <>
-                <span className="eyebrow text-[#0B0B0C]/50">Book your moment</span>
-                <h2 id="booking-title" className="mt-5 max-w-md font-serif text-5xl leading-none sm:text-6xl">
-                  Choose where the chair meets you.
-                </h2>
-                <form onSubmit={handleBookingSubmit} className="mt-10 space-y-5">
-                  <fieldset>
-                    <legend className="text-xs font-medium uppercase tracking-[0.16em] text-[#0B0B0C]/55">
-                      Start with a setting
-                    </legend>
-                    <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                      <button
-                        type="button"
-                        aria-pressed={bookingMode === 'salon'}
-                        onClick={() => setBookingMode('salon')}
-                        className={cn(
-                          'border p-5 text-left transition-colors',
-                          bookingMode === 'salon'
-                            ? 'border-[#5D1612] bg-[#5D1612] text-[#F4F1EA]'
-                            : 'border-[#0B0B0C]/20 hover:border-[#0B0B0C]',
-                        )}
-                      >
-                        <span className="block text-xs font-medium uppercase tracking-[0.16em]">The salon</span>
-                        <span className="mt-2 block font-serif text-2xl leading-none">50 West 17th</span>
-                      </button>
-                      <button
-                        type="button"
-                        aria-pressed={bookingMode === 'mobile'}
-                        onClick={() => setBookingMode('mobile')}
-                        className={cn(
-                          'border p-5 text-left transition-colors',
-                          bookingMode === 'mobile'
-                            ? 'border-[#5D1612] bg-[#5D1612] text-[#F4F1EA]'
-                            : 'border-[#0B0B0C]/20 hover:border-[#0B0B0C]',
-                        )}
-                      >
-                        <span className="block text-xs font-medium uppercase tracking-[0.16em]">On the go</span>
-                        <span className="mt-2 block font-serif text-2xl leading-none">We come to you</span>
-                      </button>
-                    </div>
-                    <p className="mt-3 text-sm leading-relaxed text-[#0B0B0C]/60">
-                      {bookingMode === 'salon'
-                        ? 'Your appointment will be at our Manhattan salon on West 17th Street.'
-                        : bookingMode === 'mobile'
-                          ? 'We’ll confirm the address and timing for your mobile visit.'
-                          : 'Choose your setting to continue.'}
-                    </p>
-                    <input type="hidden" name="location" value={bookingMode ?? ''} />
-                  </fieldset>
-                  <label className="block">
-                    <span className="sr-only">Your name</span>
-                    <input
-                      required
-                      name="name"
-                      type="text"
-                      placeholder="Your name"
-                      className="w-full border-0 border-b border-[#0B0B0C]/20 bg-transparent px-0 py-3 text-base outline-none placeholder:text-[#0B0B0C]/40 focus:border-[#5D1612]"
-                    />
-                  </label>
-                  <label className="block">
-                    <span className="sr-only">Email address</span>
-                    <input
-                      required
-                      name="email"
-                      type="email"
-                      placeholder="Email address"
-                      className="w-full border-0 border-b border-[#0B0B0C]/20 bg-transparent px-0 py-3 text-base outline-none placeholder:text-[#0B0B0C]/40 focus:border-[#5D1612]"
-                    />
-                  </label>
-                  <Button type="submit" size="lg" disabled={!bookingMode} className="mt-4 w-full sm:w-auto">
-                    Request an appointment
-                  </Button>
-                </form>
-              </>
-            )}
+              <p className="mt-3 text-sm leading-relaxed text-[#0B0B0C]/60">
+                Booking opens in Square, where you can see the price list and reserve your appointment.
+              </p>
+            </div>
           </div>
         </div>
       )}

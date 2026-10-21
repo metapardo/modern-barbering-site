@@ -32,8 +32,8 @@ paths:
           description: Invalid inquiry
         "429":
           description: Too many inquiries
-        "500":
-          description: Inquiry could not be saved
+        "503":
+          description: Inquiry email could not be sent
   /healthz:
     get:
       operationId: healthCheck
@@ -86,6 +86,9 @@ components:
         notes:
           type: string
           maxLength: 4000
+        website:
+          type: string
+          description: Honeypot field. Leave empty; real visitors never see it.
     EventRequestReceipt:
       type: object
       required: [reference, status]

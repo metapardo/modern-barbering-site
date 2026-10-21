@@ -38,7 +38,8 @@ export const CreateEventRequestBody = zod.object({
   "numberOfGuests": zod.number().int().min(1).max(createEventRequestBodyNumberOfGuestsMax),
   "location": zod.string().min(1).max(createEventRequestBodyLocationMax),
   "servicesNeeded": zod.string().min(1).max(createEventRequestBodyServicesNeededMax),
-  "notes": zod.string().max(createEventRequestBodyNotesMax).optional()
+  "notes": zod.string().max(createEventRequestBodyNotesMax).optional(),
+  "website": zod.string().optional().describe('Honeypot field. Leave empty; real visitors never see it.')
 })
 
 export const CreateEventRequestResponse = zod.object({
