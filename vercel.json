@@ -2,10 +2,16 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "vite",
   "installCommand": "pnpm install",
-  "buildCommand": "pnpm --filter @workspace/modern-barbering run build",
+  "buildCommand": "pnpm --filter @workspace/api-server run build && pnpm --filter @workspace/modern-barbering run build",
   "outputDirectory": "artifacts/modern-barbering/dist/public",
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/api/(.*)",
+      "destination": "/api"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }
