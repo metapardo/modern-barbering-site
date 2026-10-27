@@ -6,7 +6,7 @@ import { logger } from "./lib/logger";
 
 const app: Express = express();
 
-// Behind one reverse proxy in deployment (Replit), so req.ip is the real client
+// Behind one reverse proxy in deployment (Vercel) and locally (the Vite proxy), so req.ip is the real client
 // address used by the per-IP form rate limits. Override with TRUST_PROXY if needed.
 const trustProxy = process.env.TRUST_PROXY?.trim();
 app.set("trust proxy", !trustProxy ? 1 : /^\d+$/.test(trustProxy) ? Number(trustProxy) : trustProxy);

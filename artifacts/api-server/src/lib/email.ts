@@ -9,7 +9,7 @@ import { Resend } from "resend";
  *   line breaks in the subject.
  */
 
-const DEFAULT_TO = "Atseanpardo@gmail.com";
+const DEFAULT_TO = "modernbarbering@icloud.com";
 const DEFAULT_FROM = "Modern Barbering <onboarding@resend.dev>";
 const SEND_TIMEOUT_MS = 10_000;
 
