@@ -21,7 +21,7 @@ export default function About() {
       <Header activeAbout onBook={goToBooking} />
       <main className="section-dark min-h-[100dvh] px-6 pb-24 pt-32 sm:pt-36">
         <header className="mx-auto max-w-4xl text-center">
-          <p className="eyebrow mb-4 text-[#F4F1EA]/45">A little about the chair</p>
+          <p className="eyebrow mb-4 text-[#F4F1EA]/45">Your Manhattan barber</p>
           <h1 data-testid="text-about-name" className="font-serif text-6xl leading-[0.95] tracking-tight sm:text-7xl md:text-8xl">
             Ryon
           </h1>
@@ -49,7 +49,7 @@ export default function About() {
             Just before the pandemic, I started Modern Barbering NYC as an independent business. In 2020, I began offering mobile barbering services, bringing the experience directly to my clients.
           </p>
           <p>
-            Today, I continue to do what I’ve always loved, whether it’s in the salon, at a client’s home, or at their office. For me, barbering has always been about the craft, building relationships, and taking pride in the work I do.
+            Today, I continue to do what I’ve always loved, whether it’s in my Flatiron salon suite, at a client’s home, or at their office across Manhattan. For me, barbering has always been about the craft, building relationships, and taking pride in the work I do.
           </p>
         </article>
 

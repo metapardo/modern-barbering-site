@@ -71,7 +71,7 @@ function Hero() {
         
           <div className="max-w-2xl ml-0 lg:ml-24">
           <p className="text-[1.0125rem] md:text-[1.125rem] text-[#F4F1EA]/80 mb-10 leading-relaxed font-light">
-            Get ready — on the move, or in the salon. Modern Barbering NYC prepares you for the future ahead.
+            Get ready — on the move, or in the salon. Modern Barbering NYC is a Manhattan barber with a private salon suite on West 17th Street and a mobile barber service that comes to your home, office, or event.
           </p>
           
           <div className="grid w-full max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3">
@@ -132,7 +132,7 @@ function WhyItMatters() {
             
             <div className="lg:col-span-4 lg:pt-4">
               <p className="max-w-md text-[1.35rem] text-[#0B0B0C]/70 leading-relaxed font-light">
-                The interview, the flight out, the stage, the first date, the day you needed to look like you meant it. We prepare you for the moments that require your absolute best.
+                The interview, the flight out, the stage, the first date, the day you needed to look like you meant it. We prepare you for the moments that require your absolute best. Precision haircuts, fades, and beard work, done with the time and attention of a private appointment.
               </p>
             </div>
           </div>
@@ -160,7 +160,7 @@ function HowYouArrive() {
             <div>
               <span className="eyebrow text-[#F4F1EA]/70 mb-4">The Salon</span>
               <p className="text-2xl md:text-3xl text-[#F4F1EA] max-w-sm leading-snug">
-                50 West 17th Street. A room built for the work.
+                50 West 17th Street, between Fifth and Sixth. A private barber suite built for the work.
               </p>
             </div>
           </div>
@@ -180,7 +180,7 @@ function HowYouArrive() {
             <div>
               <span className="eyebrow text-[#F4F1EA]/70 mb-4">The Mobile Chair</span>
               <p className="text-2xl md:text-3xl text-[#F4F1EA] max-w-sm leading-snug">
-                We drive to you. The chair finds the moment, wherever it's happening.
+                We drive to you — home, office, or hotel anywhere in Manhattan. The chair finds the moment, wherever it's happening.
               </p>
             </div>
           </div>
@@ -195,7 +195,7 @@ function ChooseYourChair() {
   const steps = [
     ['01', 'Choose your chair', 'Head to 50 West 17th, or have the chair arrive at your door.'],
     ['02', 'Tell us the moment', 'Share the date and your location.'],
-    ['03', 'Events', 'Wedding mornings, celebrations, and group appointments arranged around your day.'],
+    ['03', 'Events', 'Wedding barber for grooms and groomsmen, celebrations, photo shoots, and group appointments, arranged around your day.'],
   ];
 
   return (
@@ -278,6 +278,9 @@ function WhereWeWork() {
                 50 West 17th Street<br />
                 New York, NY 10011
               </p>
+              <p className="text-lg text-[#0B0B0C]/70 font-light mb-4 max-w-sm">
+                A private salon suite in Flatiron, near Union Square. One client at a time.
+              </p>
               <p className="text-sm tracking-widest uppercase text-[#0B0B0C]/50 mb-12">
                 By Appointment Only
               </p>
@@ -291,7 +294,7 @@ function WhereWeWork() {
                 On Location
               </h3>
               <p className="text-lg text-[#0B0B0C]/70 font-light mb-4 max-w-sm">
-                The mobile chair serves Manhattan. Outside-area events are available by inquiry.
+                Mobile barber service across Manhattan: homes, offices, hotels, and sets. Events outside Manhattan by inquiry.
               </p>
               <p className="text-sm tracking-widest uppercase text-[#0B0B0C]/50 mb-12">
                 Home · Office · Hotel · Set
@@ -421,10 +424,10 @@ function EventRequest() {
       <div className="container mx-auto grid grid-cols-1 gap-12 px-6 md:grid-cols-12 md:gap-16 md:px-12">
         <div className="md:col-span-5">
           <Reveal>
-            <span className="eyebrow text-[#0B0B0C]/50">Events · By inquiry</span>
+            <span className="eyebrow text-[#0B0B0C]/50">Weddings &amp; Events · By inquiry</span>
             <h2 className="headline-large text-[#0B0B0C]">A good day starts before the first guest arrives.</h2>
             <p className="mt-7 max-w-md text-lg leading-relaxed text-[#0B0B0C]/65">
-              Tell us what you’re planning. Ryon will follow up to discuss the timing, location, and services. This is an inquiry, not a confirmed booking.
+              On-location grooming for weddings, groomsmen, corporate events, and shoots in New York City. Tell us what you’re planning — Ryon will follow up to discuss the timing, location, and services. This is an inquiry, not a confirmed booking.
             </p>
             <p className="mt-6 text-xs uppercase tracking-[0.14em] text-[#0B0B0C]/45">New York time · Event locations outside Manhattan by inquiry</p>
           </Reveal>
@@ -521,6 +524,71 @@ function EventRequest() {
   );
 }
 
+const services = [
+  ['Haircut', 'Precision cuts and fades, finished with a clean line-up.'],
+  ['Beard trim & line-up', 'Shape, detail, and edge work for any beard length.'],
+  ['Haircut + beard', 'The full appointment, in one sitting.'],
+  ['Mobile visit', 'The chair comes to your home, office, or hotel anywhere in Manhattan.'],
+  ['Groom & groomsmen', 'Wedding-morning grooming for the whole party, on location.'],
+  ['Corporate in-office days', 'Book a day of cuts for your team at your office.'],
+] as const;
+
+const faqs = [
+  ['Can a barber come to my home or hotel in NYC?', 'Yes. The mobile chair serves all of Manhattan, including homes, offices, hotels, and sets. Book “On the Go” and add your address in Square.'],
+  ['How much does a mobile barber cost?', 'Prices for the salon and mobile visits are listed in Square when you book, before you pay anything.'],
+  ['Do you do wedding and groomsmen haircuts?', 'Yes. Ryon grooms the groom and groomsmen on the wedding morning, at your hotel or venue. Send an event inquiry with your date and location.'],
+  ['Can you come to our office?', 'Yes. In-office days work well for teams. Send an event inquiry with your group size and preferred date.'],
+  ['Where is the salon?', 'Our private suite is at 50 West 17th Street, New York, NY 10011, in Flatiron near Union Square. Appointments only.'],
+] as const;
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(([question, answer]) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: { '@type': 'Answer', text: answer },
+  })),
+};
+
+function ServicesAndFaq() {
+  return (
+    <section id="services" className="section-light scroll-mt-24 border-t border-[#0B0B0C]/10 py-24 sm:py-32">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <div className="container mx-auto grid grid-cols-1 gap-16 px-6 md:px-12 lg:grid-cols-2 lg:gap-24">
+        <Reveal>
+          <span className="eyebrow text-[#0B0B0C]/50">Services</span>
+          <h2 className="headline-medium mt-4 text-[#0B0B0C]">In the salon, or on location.</h2>
+          <ul className="mt-10 border-t border-[#0B0B0C]/15">
+            {services.map(([name, copy]) => (
+              <li key={name} className="border-b border-[#0B0B0C]/15 py-5">
+                <h3 className="text-sm font-medium uppercase tracking-[0.16em] text-[#0B0B0C]">{name}</h3>
+                <p className="mt-2 leading-relaxed text-[#0B0B0C]/65">{copy}</p>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-6 text-xs uppercase tracking-[0.14em] text-[#0B0B0C]/45">Prices are shown in Square when you book</p>
+        </Reveal>
+        <Reveal>
+          <span className="eyebrow text-[#0B0B0C]/50">Questions</span>
+          <h2 className="headline-medium mt-4 text-[#0B0B0C]">Before you book.</h2>
+          <div className="mt-10 border-t border-[#0B0B0C]/15">
+            {faqs.map(([question, answer]) => (
+              <details key={question} className="group border-b border-[#0B0B0C]/15 py-5">
+                <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-6 text-[#0B0B0C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60">
+                  <span className="font-serif text-xl leading-snug">{question}</span>
+                  <span aria-hidden="true" className="text-2xl font-light text-[#0B0B0C]/50 transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p className="mt-3 max-w-lg leading-relaxed text-[#0B0B0C]/65">{answer}</p>
+              </details>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 function Closing({ onBook }: { onBook: () => void }) {
   return (
     <section className="py-[140px] lg:py-[200px] section-dark" id="booking">
@@ -602,6 +670,7 @@ export default function Home() {
         <ChooseYourChair />
         <Philosophy />
         <WhereWeWork />
+        <ServicesAndFaq />
         <Closing onBook={openBooking} />
         <EventRequest />
       </main>

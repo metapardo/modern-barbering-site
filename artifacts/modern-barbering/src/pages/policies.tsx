@@ -21,7 +21,7 @@ const policies = [
   },
   {
     title: 'Mobile Service Area',
-    copy: 'The mobile chair currently serves Manhattan only. For locations outside Manhattan, including events, reach out before booking and we’ll let you know what’s possible.',
+    copy: 'The mobile barber service covers all of Manhattan — homes, offices, and hotels. For locations outside Manhattan, including events, reach out before booking and we’ll let you know what’s possible.',
   },
   {
     title: 'Health & Safety',
