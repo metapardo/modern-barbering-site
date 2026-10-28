@@ -16,6 +16,7 @@ export function Header({ onBook, activeAbout = false, activePolicies = false }: 
   const links = [
     { href: '/#choices', label: 'How it works' },
     { href: '/#locations', label: 'Locations' },
+    { href: '/#contact', label: 'Contact' },
   ];
 
   useEffect(() => {
@@ -195,10 +196,32 @@ export function Footer({ onBook }: { onBook: () => void }) {
     { href: '/about', label: 'About' },
     { href: '/policies', label: 'Policies' },
   ];
+  const contactLabelClass = 'text-xs uppercase tracking-widest text-[#F4F1EA]/50';
+  const contactLinkClass =
+    'inline-flex min-h-11 items-center break-words font-serif text-2xl text-[#F4F1EA] transition-colors hover:text-[#F4F1EA]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F4F1EA]/60 sm:text-3xl';
 
   return (
     <footer className="border-t border-[#F4F1EA]/10 py-12 section-dark">
       <div className="container mx-auto px-6 md:px-12">
+        <section id="contact" aria-labelledby="contact-title" className="scroll-mt-24 mb-12 border-b border-[#F4F1EA]/10 pb-12 text-center md:text-left">
+          <h2 id="contact-title" className="mb-6 text-xs uppercase tracking-widest text-[#F4F1EA]/50">
+            Contact Us
+          </h2>
+          <div className="flex flex-col items-center gap-2 md:flex-row md:items-baseline md:gap-12">
+            <p className="flex flex-wrap items-baseline justify-center gap-x-3 md:justify-start">
+              <span className={contactLabelClass}>Phone:</span>
+              <a href="tel:+16465103068" className={contactLinkClass} data-testid="link-contact-phone">
+                (646) 510-3068
+              </a>
+            </p>
+            <p className="flex flex-wrap items-baseline justify-center gap-x-3 md:justify-start">
+              <span className={contactLabelClass}>Email:</span>
+              <a href="mailto:modernbarbering@icloud.com" className={contactLinkClass} data-testid="link-contact-email">
+                modernbarbering@icloud.com
+              </a>
+            </p>
+          </div>
+        </section>
         <div className="mb-12 flex flex-col items-center justify-between gap-8 xl:flex-row">
           <Link
             href="/"
