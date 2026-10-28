@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { Footer, Header } from '@/components/site-navigation';
+import { usePageMeta } from '@/lib/page-meta';
 
-const TITLE = 'Policies | Modern Barbering NYC';
+const TITLE = 'Booking & Cancellation Policies | Modern Barbering NYC';
 const DESCRIPTION =
   'Clear policies for appointments, mobile barbering, events, and group bookings with Modern Barbering NYC.';
 
@@ -35,37 +36,10 @@ const policies = [
 export default function Policies() {
   const goToBooking = () => window.location.assign(`${import.meta.env.BASE_URL}#booking`);
 
+  usePageMeta(TITLE, DESCRIPTION, '/policies');
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'auto' });
-    const previousTitle = document.title;
-    const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
-    const ogTitle = document.querySelector<HTMLMetaElement>('meta[property="og:title"]');
-    const ogDescription = document.querySelector<HTMLMetaElement>('meta[property="og:description"]');
-    const twitterTitle = document.querySelector<HTMLMetaElement>('meta[name="twitter:title"]');
-    const twitterDescription = document.querySelector<HTMLMetaElement>('meta[name="twitter:description"]');
-    const previous = {
-      description: description?.content,
-      ogTitle: ogTitle?.content,
-      ogDescription: ogDescription?.content,
-      twitterTitle: twitterTitle?.content,
-      twitterDescription: twitterDescription?.content,
-    };
-
-    document.title = TITLE;
-    if (description) description.content = DESCRIPTION;
-    if (ogTitle) ogTitle.content = TITLE;
-    if (ogDescription) ogDescription.content = DESCRIPTION;
-    if (twitterTitle) twitterTitle.content = TITLE;
-    if (twitterDescription) twitterDescription.content = DESCRIPTION;
-
-    return () => {
-      document.title = previousTitle;
-      if (description && previous.description !== undefined) description.content = previous.description;
-      if (ogTitle && previous.ogTitle !== undefined) ogTitle.content = previous.ogTitle;
-      if (ogDescription && previous.ogDescription !== undefined) ogDescription.content = previous.ogDescription;
-      if (twitterTitle && previous.twitterTitle !== undefined) twitterTitle.content = previous.twitterTitle;
-      if (twitterDescription && previous.twitterDescription !== undefined) twitterDescription.content = previous.twitterDescription;
-    };
   }, []);
 
   return (

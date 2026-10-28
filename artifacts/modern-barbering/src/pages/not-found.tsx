@@ -1,7 +1,18 @@
 import { Card, CardContent } from '@/components/ui/card';
+import { useEffect } from 'react';
 import { AlertCircle } from 'lucide-react';
 
 export default function NotFound() {
+  // The SPA answers unknown paths with a 200, so tell search engines not to index this page.
+  useEffect(() => {
+    const robots = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
+    const previous = robots?.content;
+    if (robots) robots.content = 'noindex';
+    return () => {
+      if (robots && previous) robots.content = previous;
+    };
+  }, []);
+
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-gray-50">
       <Card className="w-full max-w-md mx-4">

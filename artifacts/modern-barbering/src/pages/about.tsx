@@ -1,45 +1,19 @@
 import { useEffect } from 'react';
-import portrait from '@assets/Agent_Image_-_Convert_this_photograph_to_black_and_white_clean_1792005020781.png';
+import portrait from '@assets/ryon-portrait.jpg';
 import { Footer, Header } from '@/components/site-navigation';
+import { usePageMeta } from '@/lib/page-meta';
 
-const ABOUT_TITLE = 'Ryon — About | Modern Barbering NYC';
+const ABOUT_TITLE = 'About Ryon, Manhattan Barber | Modern Barbering NYC';
 const ABOUT_DESCRIPTION =
   'Meet Ryon, founder of Modern Barbering NYC. More than 25 years of barbering, building relationships in the salon, at home, and at the office.';
 
 export default function About() {
   const goToBooking = () => window.location.assign(`${import.meta.env.BASE_URL}#booking`);
 
+  usePageMeta(ABOUT_TITLE, ABOUT_DESCRIPTION, '/about');
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'auto' });
-    const title = document.title;
-    const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
-    const ogTitle = document.querySelector<HTMLMetaElement>('meta[property="og:title"]');
-    const ogDescription = document.querySelector<HTMLMetaElement>('meta[property="og:description"]');
-    const twitterTitle = document.querySelector<HTMLMetaElement>('meta[name="twitter:title"]');
-    const twitterDescription = document.querySelector<HTMLMetaElement>('meta[name="twitter:description"]');
-    const previous = {
-      description: description?.content,
-      ogTitle: ogTitle?.content,
-      ogDescription: ogDescription?.content,
-      twitterTitle: twitterTitle?.content,
-      twitterDescription: twitterDescription?.content,
-    };
-
-    document.title = ABOUT_TITLE;
-    if (description) description.content = ABOUT_DESCRIPTION;
-    if (ogTitle) ogTitle.content = ABOUT_TITLE;
-    if (ogDescription) ogDescription.content = ABOUT_DESCRIPTION;
-    if (twitterTitle) twitterTitle.content = ABOUT_TITLE;
-    if (twitterDescription) twitterDescription.content = ABOUT_DESCRIPTION;
-
-    return () => {
-      document.title = title;
-      if (description && previous.description !== undefined) description.content = previous.description;
-      if (ogTitle && previous.ogTitle !== undefined) ogTitle.content = previous.ogTitle;
-      if (ogDescription && previous.ogDescription !== undefined) ogDescription.content = previous.ogDescription;
-      if (twitterTitle && previous.twitterTitle !== undefined) twitterTitle.content = previous.twitterTitle;
-      if (twitterDescription && previous.twitterDescription !== undefined) twitterDescription.content = previous.twitterDescription;
-    };
   }, []);
 
   return (

@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef, type ReactNode } from 'react';
 import { Button } from '@/components/ui/button';
 import { Footer, Header } from '@/components/site-navigation';
-import heroImage from '@assets/np_New_York_city_skyline_at_sunset_0PJag4_large_1787701674333.jpg';
-import salonImage from '@assets/Agent_Image_-_Convert_this_photograph_to_black_and_white_clean_1791911057096.png';
-import mobileImage from '@assets/Agent_Image_-_Convert_this_photograph_to_black_and_white_with__1791909001531.png';
+import heroImage from '@assets/nyc-skyline-hero.jpg';
+import salonImage from '@assets/salon-chair.jpg';
+import mobileImage from '@assets/mobile-chair.jpg';
 import { cn } from '@/lib/utils';
 import { useCreateEventRequest } from '@workspace/api-client-react';
 import { SQUARE_BOOKING_URLS } from '@/lib/booking';
