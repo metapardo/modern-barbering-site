@@ -71,7 +71,7 @@ function Hero() {
         
           <div className="max-w-2xl ml-0 lg:ml-24">
           <p className="text-[1.0125rem] md:text-[1.125rem] text-[#F4F1EA]/80 mb-10 leading-relaxed font-light">
-            Get ready — on the move, or in the salon. Modern Barbering NYC is a Manhattan barber with a private salon suite on West 17th Street and a mobile barber service that comes to your home, office, or event.
+            Get ready on the move or in the salon. Modern Barbering NYC is a Manhattan barber with a private salon suite on West 17th Street and a mobile barber service that comes to your home, office, or event.
           </p>
           
           <div className="grid w-full max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3">
@@ -180,7 +180,7 @@ function HowYouArrive() {
             <div>
               <span className="eyebrow text-[#F4F1EA]/70 mb-4">The Mobile Chair</span>
               <p className="text-2xl md:text-3xl text-[#F4F1EA] max-w-sm leading-snug">
-                We drive to you — home, office, or hotel anywhere in Manhattan. The chair finds the moment, wherever it's happening.
+                We drive to you: home, office, or hotel, anywhere in Manhattan. The chair finds the moment, wherever it's happening.
               </p>
             </div>
           </div>
@@ -255,7 +255,7 @@ function Philosophy() {
             "They don't see the cut. They see the person who was ready."
           </blockquote>
           <p className="text-sm md:text-base tracking-[0.2em] uppercase text-[#F4F1EA]/50 max-w-2xl mx-auto leading-relaxed">
-            Confidence isn't styled on top of you. It's revealed underneath — that's the work.
+            Confidence isn't styled on top of you. It's revealed underneath. That's the work.
           </p>
         </Reveal>
       </div>
@@ -309,7 +309,7 @@ function WhereWeWork() {
 
 function eventRequestError(
   error: unknown,
-  fallback = 'We couldn’t send your inquiry just now. Your details are still here—please try again.',
+  fallback = 'We couldn’t send your inquiry just now. Your details are still here, so please try again.',
 ): string {
   if (error && typeof error === 'object') {
     const value = error as { message?: unknown; data?: unknown; body?: unknown };
@@ -427,7 +427,7 @@ function EventRequest() {
             <span className="eyebrow text-[#0B0B0C]/50">Weddings &amp; Events · By inquiry</span>
             <h2 className="headline-large text-[#0B0B0C]">A good day starts before the first guest arrives.</h2>
             <p className="mt-7 max-w-md text-lg leading-relaxed text-[#0B0B0C]/65">
-              On-location grooming for weddings, groomsmen, corporate events, and shoots in New York City. Tell us what you’re planning — Ryon will follow up to discuss the timing, location, and services. This is an inquiry, not a confirmed booking.
+              On-location grooming for weddings, groomsmen, corporate events, and shoots in New York City. Tell us what you’re planning, and Ryon will follow up to discuss the timing, location, and services. This is an inquiry, not a confirmed booking.
             </p>
             <p className="mt-6 text-xs uppercase tracking-[0.14em] text-[#0B0B0C]/45">New York time · Event locations outside Manhattan by inquiry</p>
           </Reveal>
@@ -599,7 +599,7 @@ function Closing({ onBook }: { onBook: () => void }) {
             We have the chair for it.
           </h2>
           <p className="text-xl text-[#F4F1EA]/70 font-light mb-16">
-            Tell us where you'll be — the salon, or wherever you are.
+            Tell us where you'll be: the salon, or wherever you are.
           </p>
           <Button size="lg" className="w-full sm:w-auto" onClick={onBook}>
             Book Now

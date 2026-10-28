@@ -102,7 +102,7 @@ router.post("/event-requests", async (req, res): Promise<void> => {
   if (!email.ok) {
     req.log.error({ reference, reason: email.reason, detail: email.message }, "Event inquiry email failed; inquiry not delivered");
     res.status(503).json({
-      error: "We couldn’t send your inquiry just now. Your details are still here—please try again in a few minutes.",
+      error: "We couldn’t send your inquiry just now. Your details are still here, so please try again in a few minutes.",
     });
     return;
   }
